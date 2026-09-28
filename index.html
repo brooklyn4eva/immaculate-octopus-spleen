@@ -16,6 +16,7 @@
 
   <a class="skip" href="#work">Skip to videos</a>
   <div class="progress" aria-hidden="true"></div>
+  <div class="viewfinder" aria-hidden="true"></div>
 
   <header class="site-header">
     <a class="brand" href="#top">Chris Perez</a>
@@ -42,6 +43,8 @@
         <a class="text-link" href="#contact">Get in touch</a>
       </p>
     </section>
+
+    <div class="bars" aria-hidden="true"></div>
 
     <section id="about" class="section" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
@@ -328,7 +331,7 @@
         });
       }
 
-      var selector = '.section > h2, .prose, .facts, .video-card, .timeline li, .edu, .resume, .article-empty, .article-card, .contact > *';
+      var selector = '.section > h2, .prose, .facts, .video-card, .timeline li, .edu, .resume, .bars, .article-empty, .article-card, .contact > *';
       var items = document.querySelectorAll(selector);
 
       if (reduce || !('IntersectionObserver' in window)) {
