@@ -85,11 +85,12 @@
 
       <ol class="timeline">
         <li>
-          <p class="when">August 2026 to Present</p>
+          <p class="when">September 2026 to Present</p>
           <div>
             <h3>NBC News</h3>
             <p class="role">News Associate, Net Desk</p>
             <p class="where">New York, New York</p>
+            <p>Mobilizes correspondents and field teams for more than 10 daily coverage requests, connecting NBC News programs with reporting resources and coordinating logistics for breaking and developing stories.</p>
           </div>
         </li>
         <li>
@@ -98,7 +99,7 @@
             <h3>NBC News</h3>
             <p class="role">Southern News Bureau Intern</p>
             <p class="where">Miami, Florida</p>
-            <p>Newsgathered across the southeast for TODAY and Nightly News, kept the national desk current through NewsConnect, and supported three correspondents a day with calls, interview bookings, and press conference logs.</p>
+            <p>Newsgathered across the southeast for programs in the news division, kept the national desk current through NewsConnect, and supported three correspondents a day with calls, interview bookings, and press conference logs.</p>
           </div>
         </li>
         <li>
@@ -120,6 +121,21 @@
           </div>
         </li>
       </ol>
+
+      <div class="resume">
+        <div class="resume-head">
+          <h3>Resume</h3>
+          <p class="resume-actions">
+            <a class="button" href="Chris_Perez_Resume.pdf" download="Chris Perez Resume.pdf">Download PDF</a>
+            <a class="text-link" href="Chris_Perez_Resume.pdf" target="_blank" rel="noopener">Open in a new tab</a>
+          </p>
+        </div>
+        <div class="resume-viewer">
+          <object data="Chris_Perez_Resume.pdf#toolbar=0&amp;navpanes=0&amp;view=FitH" type="application/pdf" aria-label="Resume">
+            <p>This browser can't show the resume here. Use the buttons above to open or download it.</p>
+          </object>
+        </div>
+      </div>
     </section>
 
     <section id="education" class="section" aria-labelledby="edu-title">
@@ -253,7 +269,7 @@
         });
       }
 
-      var selector = '.section > h2, .prose, .facts, .video-card, .timeline li, .edu, .article-empty, .article-card, .contact > *';
+      var selector = '.section > h2, .prose, .facts, .video-card, .timeline li, .edu, .resume, .article-empty, .article-card, .contact > *';
       var items = document.querySelectorAll(selector);
 
       if (reduce || !('IntersectionObserver' in window)) {
