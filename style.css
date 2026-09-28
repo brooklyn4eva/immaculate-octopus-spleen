@@ -309,7 +309,13 @@ a:focus-visible, .button:focus-visible {
 .when { color: var(--accent); font-size: 0.95rem; margin: 0; }
 .timeline h3 { font-size: var(--step-1); margin-bottom: 0.25rem; }
 .where { color: var(--muted); margin-bottom: 0.5rem; }
-.timeline p:not(.when):not(.where) { margin: 0; max-width: 60ch; color: #cfd5df; }
+/* Role line under each organization */
+.role { margin: 0 0 0.15rem; color: var(--text); }
+:is(.timeline, .edu) p:not(.when):not(.where):not(.role) { margin: 0; max-width: 60ch; color: #cfd5df; }
+
+/* Education block matches the timeline layout without the rail */
+.edu { display: grid; gap: 0.25rem; }
+.edu h3 { font-size: var(--step-1); margin-bottom: 0.25rem; }
 
 .resume-link { margin: 3rem 0 0; }
 
@@ -397,6 +403,7 @@ a:focus-visible, .button:focus-visible {
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .article-grid { grid-template-columns: repeat(2, 1fr); }
   .timeline li { grid-template-columns: 9rem 1fr; gap: 2rem; padding-left: 2.5rem; }
+  .edu { grid-template-columns: 9rem 1fr; gap: 2rem; padding-left: 2.5rem; }
   .when { padding-top: 0.2rem; }
 }
 
