@@ -126,9 +126,14 @@
         <div class="resume-head">
           <h3>Resume</h3>
           <p class="resume-actions">
-            <button class="button" id="resume-open" type="button">View resume</button>
+            <button class="button" id="resume-open" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg><span>Expand</span></button>
             <a class="text-link" data-resume-download href="#" download="Chris Perez Resume.pdf">Download PDF</a>
           </p>
+        </div>
+        <div class="resume-mini" id="resume-mini">
+          <div class="resume-scroll" id="resume-scroll" tabindex="0" role="region" aria-label="Resume preview, scrollable">
+            <img id="resume-inline-image" alt="Resume">
+          </div>
         </div>
       </div>
     </section>
@@ -245,9 +250,21 @@
 
       document.querySelectorAll('[data-resume-download]').forEach(function (a) { a.href = url; });
 
+      var src = 'data:image/webp;base64,' + imageData.textContent.trim();
+      var inline = document.getElementById('resume-inline-image');
+      var scroller = document.getElementById('resume-scroll');
+      var mini = document.getElementById('resume-mini');
+      image.src = src;
+      inline.src = src;
+      function fade() {
+        mini.classList.toggle('at-end', scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 4);
+      }
+      scroller.addEventListener('scroll', fade, { passive: true });
+      inline.addEventListener('load', fade);
+      inline.addEventListener('click', function () { openBtn.click(); });
+
       openBtn.addEventListener('click', function () {
         if (typeof dialog.showModal !== 'function') { window.open(url, '_blank'); return; }
-        if (!image.getAttribute('src')) image.src = 'data:image/webp;base64,' + imageData.textContent.trim();
         dialog.querySelector('.dialog-body').scrollTop = 0;
         dialog.showModal();
         document.body.classList.add('modal-open');
