@@ -135,8 +135,21 @@ a:focus-visible, .button:focus-visible {
 }
 
 .section > h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: var(--step-2);
   margin-bottom: 1.5rem;
+}
+.title-icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .section-intro {
