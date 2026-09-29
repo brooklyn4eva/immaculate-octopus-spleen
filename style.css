@@ -260,14 +260,47 @@ a:focus-visible, .button:focus-visible {
   grid-template-columns: 1fr;
 }
 
-/* A very slight, continuous float on visual elements: video embeds, the resume preview */
+/* One slow figure-eight: x follows one sine cycle, y follows two.
+   Existing negative animation delays keep the media gently out of phase. */
 @keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-13px); }
+  0%, 50%, 100% { transform: translate3d(0, 0, 0); }
+  3.125% { transform: translate3d(1.07px, 1.15px, 0); }
+  6.25% { transform: translate3d(2.10px, 2.12px, 0); }
+  9.375% { transform: translate3d(3.06px, 2.77px, 0); }
+  12.5% { transform: translate3d(3.89px, 3px, 0); }
+  15.625% { transform: translate3d(4.57px, 2.77px, 0); }
+  18.75% { transform: translate3d(5.08px, 2.12px, 0); }
+  21.875% { transform: translate3d(5.39px, 1.15px, 0); }
+  25% { transform: translate3d(5.5px, 0, 0); }
+  28.125% { transform: translate3d(5.39px, -1.15px, 0); }
+  31.25% { transform: translate3d(5.08px, -2.12px, 0); }
+  34.375% { transform: translate3d(4.57px, -2.77px, 0); }
+  37.5% { transform: translate3d(3.89px, -3px, 0); }
+  40.625% { transform: translate3d(3.06px, -2.77px, 0); }
+  43.75% { transform: translate3d(2.10px, -2.12px, 0); }
+  46.875% { transform: translate3d(1.07px, -1.15px, 0); }
+  53.125% { transform: translate3d(-1.07px, 1.15px, 0); }
+  56.25% { transform: translate3d(-2.10px, 2.12px, 0); }
+  59.375% { transform: translate3d(-3.06px, 2.77px, 0); }
+  62.5% { transform: translate3d(-3.89px, 3px, 0); }
+  65.625% { transform: translate3d(-4.57px, 2.77px, 0); }
+  68.75% { transform: translate3d(-5.08px, 2.12px, 0); }
+  71.875% { transform: translate3d(-5.39px, 1.15px, 0); }
+  75% { transform: translate3d(-5.5px, 0, 0); }
+  78.125% { transform: translate3d(-5.39px, -1.15px, 0); }
+  81.25% { transform: translate3d(-5.08px, -2.12px, 0); }
+  84.375% { transform: translate3d(-4.57px, -2.77px, 0); }
+  87.5% { transform: translate3d(-3.89px, -3px, 0); }
+  90.625% { transform: translate3d(-3.06px, -2.77px, 0); }
+  93.75% { transform: translate3d(-2.10px, -2.12px, 0); }
+  96.875% { transform: translate3d(-1.07px, -1.15px, 0); }
 }
 .js .float-el {
-  animation: floaty 5.5s ease-in-out infinite;
+  animation: floaty 12s linear infinite;
 }
+
+/* MEDIA PARALLAX: transform is set by the isolated script in index.html. */
+.parallax-el { transform: translate3d(0, 0, 0); }
 
 .video-frame {
   aspect-ratio: 16 / 9;
@@ -917,6 +950,50 @@ body::before {
 .site-header { view-transition-name: site-header; }
 
 /* ---------- Broadcast atmosphere ---------- */
+/* Quiet, static studio motifs behind the content; never intercept clicks. */
+.broadcast-detail {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  color: #b4bbc5;
+}
+.broadcast-detail svg {
+  position: absolute;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.broadcast-detail .studio-accent { stroke: var(--accent); }
+.studio-calibration {
+  width: clamp(230px, 27vw, 390px);
+  height: auto;
+  top: 15%;
+  right: -5%;
+  opacity: 0.12;
+}
+.studio-film {
+  width: 42px;
+  height: auto;
+  top: 45%;
+  left: -18px;
+  opacity: 0.12;
+}
+.studio-waveform {
+  width: clamp(180px, 23vw, 320px);
+  height: auto;
+  right: -24px;
+  bottom: 9%;
+  opacity: 0.10;
+}
+/* Keep narrow screens spare and the motifs clear of the reading column. */
+@media (max-width: 719px) {
+  .studio-calibration { width: 210px; top: 20%; right: -115px; opacity: 0.08; }
+  .studio-film, .studio-waveform { display: none; }
+}
+
 /* Halftone dots are drawn on a canvas so they can react to the cursor */
 .halftone {
   position: fixed;
@@ -1013,6 +1090,7 @@ body::after {
   .js .contact-form .field,
   .js .contact-form .form-actions { opacity: 1; transform: none; transition: none; }
   .js .float-el { animation: none; }
+  .parallax-el { transform: none !important; }
   .field input + label,
   .field textarea + label,
   .dz-icon,
