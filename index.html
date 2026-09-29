@@ -23,12 +23,12 @@
     <a class="brand" href="#top">Chris Perez</a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Videos</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#writing">Writing</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M7 15c.5-1.6 1.8-2.4 3.2-2.4s2.7.8 3.2 2.4"/><path d="M14.5 9h4"/><path d="M14.5 12h4"/></svg><span>About</span></a></li>
+        <li><a href="#work"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="14" height="12" rx="2"/><path d="M16.5 10.5l5-3v9l-5-3"/></svg><span>Videos</span></a></li>
+        <li><a href="#experience"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/><path d="M10.5 13v1.6h3V13"/></svg><span>Experience</span></a></li>
+        <li><a href="#education"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z"/><path d="M6 11.8v4.7c0 1 2.7 2.3 6 2.3s6-1.3 6-2.3v-4.7"/><path d="M21 9.5V16"/></svg><span>Education</span></a></li>
+        <li><a href="#writing"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3.5 3.5v13.5H6z"/><path d="M10 13.2l6-6 2 2-6 6-2.4.4z"/></svg><span>Writing</span></a></li>
+        <li><a href="#contact"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg><span>Contact</span></a></li>
       </ul>
     </nav>
   </header>
@@ -490,9 +490,9 @@
 
       function draw(t) {
         ctx.clearRect(0, 0, w, h);
-        var drift = t * 0.008;
-        var ox = -S + (drift % S);
-        var oy = -dy + ((drift * 0.7 + window.scrollY * 0.18) % dy);
+        var drift = t * 0.00028;
+        var ox = -S + ((drift % 1) * S);
+        var oy = -dy + ((((drift * 0.7) % 1) * dy + window.scrollY * 0.18) % dy);
         var rows = Math.ceil(h / dy) + 3, cols = Math.ceil(w / S) + 3;
         var base = new Path2D(), hot = new Path2D();
         var cursor = strength > 0.01;
@@ -504,31 +504,31 @@
             var x = ox + i * S + shift;
             var f = Math.max(1 - Math.hypot(w - x, y) / R, 1 - Math.hypot(x, h - y) / R);
             f = f > 0 ? Math.pow(f, 1.3) : 0;
+            if (f <= 0.02) continue;
             var r = f * 7.5;
-            if (r > 0) r += Math.sin(t * 0.0012 + x * 0.012 + y * 0.017) * 0.9 * f;
-            var px = x, py = y, isHot = false;
+            r += Math.sin(t * 0.0012 + x * 0.012 + y * 0.017) * 0.9 * f;
+            var isHot = false;
 
+            /* Cursor only wakes up dots that already belong to a corner cluster (f > 0) */
             if (cursor) {
-              var dx = x - mx, dyy = y - my;
-              var d = Math.hypot(dx, dyy);
+              var d = Math.hypot(x - mx, y - my);
               if (d < RADIUS) {
                 var g = 1 - d / RADIUS;
-                g = g * g * (3 - 2 * g) * strength;
-                r += g * 5;
-                if (d > 0.1) { px += dx / d * g * 16; py += dyy / d * g * 16; }
-                isHot = g > 0.4;
+                g = g * g * (3 - 2 * g) * strength * f;
+                r += g * 6;
+                isHot = g > 0.22;
               }
             }
             if (r > 0.6) {
               var p = isHot ? hot : base;
-              p.moveTo(px + r, py);
-              p.arc(px, py, r, 0, 6.2832);
+              p.moveTo(x + r, y);
+              p.arc(x, y, r, 0, 6.2832);
             }
           }
         }
         ctx.fillStyle = 'rgba(255, 255, 255, 0.17)';
         ctx.fill(base);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.34)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
         ctx.fill(hot);
       }
 
