@@ -48,7 +48,7 @@
     <div class="bars" aria-hidden="true"></div>
 
     <section id="about" class="section" aria-labelledby="about-title">
-      <h2 id="about-title">About</h2>
+      <h2 id="about-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M7 15c.5-1.6 1.8-2.4 3.2-2.4s2.7.8 3.2 2.4"/><path d="M14.5 9h4"/><path d="M14.5 12h4"/></svg>About</h2>
       <div class="about-grid">
         <div class="prose">
           <p>I am a News Associate on the Net Desk at NBC News, based at 30 Rock in New York. I graduated from the University of Miami in May 2026 with a bachelor's degree in Electronic Media and a minor in Motion Pictures. For two semesters I was Executive Producer of NewsVision, UMTV's live flagship newscast. Along the way I interned with the TODAY show in New York and at NBC News&#8217; Southern Bureau. I have worked in the control room, in the field, and on the desk.</p>
@@ -63,7 +63,7 @@
     </section>
 
     <section id="work" class="section" aria-labelledby="work-title">
-      <h2 id="work-title">Broadcast and video work</h2>
+      <h2 id="work-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="14" height="12" rx="2"/><path d="M16.5 10.5l5-3v9l-5-3"/></svg>Broadcast and video work</h2>
 
       <div class="video-grid">
         <article class="video-card">
@@ -85,7 +85,7 @@
     </section>
 
     <section id="experience" class="section" aria-labelledby="exp-title">
-      <h2 id="exp-title">Experience</h2>
+      <h2 id="exp-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/><path d="M10.5 13v1.6h3V13"/></svg>Experience</h2>
 
       <ol class="timeline">
         <li>
@@ -143,7 +143,7 @@
     </section>
 
     <section id="education" class="section" aria-labelledby="edu-title">
-      <h2 id="edu-title">Education</h2>
+      <h2 id="edu-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z"/><path d="M6 11.8v4.7c0 1 2.7 2.3 6 2.3s6-1.3 6-2.3v-4.7"/><path d="M21 9.5V16"/></svg>Education</h2>
       <div class="edu">
         <p class="when">May 2026</p>
         <div>
@@ -156,7 +156,7 @@
     </section>
 
     <section id="writing" class="section" aria-labelledby="writing-title">
-      <h2 id="writing-title">Writing</h2>
+      <h2 id="writing-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3.5 3.5v13.5H6z"/><path d="M10 13.2l6-6 2 2-6 6-2.4.4z"/></svg>Writing</h2>
 
       <div class="article-grid">
         <p class="article-empty">Published work will appear here.</p>
@@ -172,7 +172,7 @@
     </section>
 
     <section id="contact" class="section contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Let's talk</h2>
+      <h2 id="contact-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>Let's talk</h2>
       <p class="lede">For questions, collaborations, or introductions, send a message below.</p>
       <form class="contact-form" action="https://formsubmit.co/ajax/7e4c9ba3c3d4e025fb084381dfd88b66" method="POST" enctype="multipart/form-data">
         <div class="field">
@@ -472,7 +472,7 @@
       var ctx = canvas.getContext('2d');
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var w, h, dpr, S, dy, R;
-      var RADIUS = 190;
+      var RADIUS = 240;
       var mx = -1000, my = -1000, tx = -1000, ty = -1000, strength = 0, target = 0;
 
       function size() {
@@ -492,7 +492,7 @@
         ctx.clearRect(0, 0, w, h);
         var drift = t * 0.00028;
         var ox = -S + ((drift % 1) * S);
-        var oy = -dy + ((((drift * 0.7) % 1) * dy + window.scrollY * 0.18) % dy);
+        var oy = -dy + (((drift * 0.7) % 1) * dy);
         var rows = Math.ceil(h / dy) + 3, cols = Math.ceil(w / S) + 3;
         var base = new Path2D(), hot = new Path2D();
         var cursor = strength > 0.01;
@@ -504,7 +504,7 @@
             var x = ox + i * S + shift;
             var f = Math.max(1 - Math.hypot(w - x, y) / R, 1 - Math.hypot(x, h - y) / R);
             f = f > 0 ? Math.pow(f, 1.3) : 0;
-            if (f <= 0.02) continue;
+            if (f <= 0.012) continue;
             var r = f * 7.5;
             r += Math.sin(t * 0.0012 + x * 0.012 + y * 0.017) * 0.9 * f;
             var isHot = false;
@@ -514,9 +514,9 @@
               var d = Math.hypot(x - mx, y - my);
               if (d < RADIUS) {
                 var g = 1 - d / RADIUS;
-                g = g * g * (3 - 2 * g) * strength * f;
-                r += g * 6;
-                isHot = g > 0.22;
+                g = g * g * (3 - 2 * g) * strength * Math.min(1, f * 3);
+                r += g * 8;
+                isHot = g > 0.16;
               }
             }
             if (r > 0.6) {
@@ -528,7 +528,7 @@
         }
         ctx.fillStyle = 'rgba(255, 255, 255, 0.17)';
         ctx.fill(base);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
         ctx.fill(hot);
       }
 
