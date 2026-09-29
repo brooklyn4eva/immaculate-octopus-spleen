@@ -260,6 +260,15 @@ a:focus-visible, .button:focus-visible {
   grid-template-columns: 1fr;
 }
 
+/* A very slight, continuous float on visual elements: video embeds, the resume preview */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.js .float-el {
+  animation: floaty 6.5s ease-in-out infinite;
+}
+
 .video-frame {
   aspect-ratio: 16 / 9;
   background: var(--surface);
@@ -274,6 +283,7 @@ a:focus-visible, .button:focus-visible {
 }
 
 .video-card h3 { font-size: var(--step-1); margin-bottom: 0.4rem; }
+.video-card .float-el { display: block; }
 .video-card p { color: var(--muted); margin: 0; max-width: 52ch; }
 
 /* ---------- Timeline ---------- */
@@ -1002,6 +1012,7 @@ body::after {
   .resume-dialog[open] { animation: none; }
   .js .contact-form .field,
   .js .contact-form .form-actions { opacity: 1; transform: none; transition: none; }
+  .js .float-el { animation: none; }
   .field input + label,
   .field textarea + label,
   .dz-icon,
