@@ -743,8 +743,25 @@ body.modal-open { overflow: hidden; }
 /* Nav shows where you are */
 .site-header nav a {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   padding-block: 0.25rem;
 }
+.nav-icon {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.3s var(--ease-out);
+}
+.site-header nav a:hover .nav-icon,
+.site-header nav a[aria-current="true"] .nav-icon { opacity: 1; transform: translateY(-1px); }
 .site-header nav a::after {
   content: "";
   position: absolute;
