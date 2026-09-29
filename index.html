@@ -67,16 +67,20 @@
 
       <div class="video-grid">
         <article class="video-card">
-          <div class="video-frame">
-            <iframe src="https://www.youtube.com/embed/68qRVW3hUKM" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="float-el">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/68qRVW3hUKM" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
           </div>
           <h3>NewsVision, full episode</h3>
           <p>A live broadcast produced as Executive Producer for UMTV.</p>
         </article>
 
         <article class="video-card">
-          <div class="video-frame">
-            <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="float-el" style="animation-delay: -3.2s">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
           </div>
           <h3>Featured package</h3>
           <p>A package I created myself.</p>
@@ -134,7 +138,7 @@
             <a class="text-link" data-resume-download href="#" download="Chris Perez Resume.pdf">Download PDF</a>
           </p>
         </div>
-        <div class="resume-mini" id="resume-mini">
+        <div class="resume-mini float-el" id="resume-mini" style="animation-delay: -1.6s">
           <div class="resume-scroll" id="resume-scroll" tabindex="0" role="region" aria-label="Resume preview, scrollable">
             <img id="resume-inline-image" alt="Resume">
           </div>
@@ -510,8 +514,8 @@
             if (f <= 0.012) continue;
             var r = f * 7.5 + Math.sin(t * 0.0012 + x * 0.012 + y * 0.017) * 0.9 * f;
             if (r <= 0.6) continue;
-            /* The cursor's recent direction of travel nudges corner dots along with it */
-            var px = x + vx * f, py = y + vy * f;
+            /* The cursor's recent direction of travel nudges the whole corner cluster together */
+            var px = x + vx, py = y + vy;
             base.moveTo(px + r, py);
             base.arc(px, py, r, 0, 6.2832);
           }
@@ -526,9 +530,9 @@
 
       function point(e) {
         if (lastX !== null) {
-          vx += (e.clientX - lastX) * 0.5;
-          vy += (e.clientY - lastY) * 0.5;
-          var mag = Math.hypot(vx, vy), cap = 26;
+          vx += (e.clientX - lastX) * 0.16;
+          vy += (e.clientY - lastY) * 0.16;
+          var mag = Math.hypot(vx, vy), cap = 9;
           if (mag > cap) { vx = vx / mag * cap; vy = vy / mag * cap; }
         }
         lastX = e.clientX; lastY = e.clientY;
