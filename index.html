@@ -465,15 +465,14 @@
     })();
   </script>
   <script>
-    /* Halftone dots: pop art corners that drift, shimmer, and react to the cursor */
+    /* Halftone dots: pop art corners that drift and nudge in the direction the cursor moves */
     (function () {
       var canvas = document.getElementById('halftone');
       if (!canvas || !canvas.getContext) return;
       var ctx = canvas.getContext('2d');
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var w, h, dpr, S, dy, R;
-      var RADIUS = 240;
-      var mx = -1000, my = -1000, tx = -1000, ty = -1000, strength = 0, target = 0;
+      var vx = 0, vy = 0, lastX = null, lastY = null;
 
       function size() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -490,46 +489,35 @@
 
       function draw(t) {
         ctx.clearRect(0, 0, w, h);
-        var drift = t * 0.00028;
-        var ox = -S + ((drift % 1) * S);
-        var oy = -dy + (((drift * 0.7) % 1) * dy);
-        var rows = Math.ceil(h / dy) + 3, cols = Math.ceil(w / S) + 3;
-        var base = new Path2D(), hot = new Path2D();
-        var cursor = strength > 0.01;
+        var speedY = 0.00028 * 0.7 * dy;
+        var speedX = 0.00028 * S;
+        /* Absolute row and column indices grow without ever wrapping mid-pattern,
+           so the hex zig-zag never flips parity and snaps sideways. */
+        var rowStart = Math.floor((-t * speedY) / dy) - 2;
+        var colStart = Math.floor((-t * speedX) / S) - 2;
+        var rows = Math.ceil(h / dy) + 4, cols = Math.ceil(w / S) + 4;
+        var base = new Path2D();
 
         for (var j = 0; j < rows; j++) {
-          var y = oy + j * dy;
-          var shift = (j % 2) * S / 2;
+          var rowIndex = rowStart + j;
+          var y = rowIndex * dy + t * speedY;
+          var shift = (((rowIndex % 2) + 2) % 2) * S / 2;
           for (var i = 0; i < cols; i++) {
-            var x = ox + i * S + shift;
+            var colIndex = colStart + i;
+            var x = colIndex * S + t * speedX + shift;
             var f = Math.max(1 - Math.hypot(w - x, y) / R, 1 - Math.hypot(x, h - y) / R);
             f = f > 0 ? Math.pow(f, 1.3) : 0;
             if (f <= 0.012) continue;
-            var r = f * 7.5;
-            r += Math.sin(t * 0.0012 + x * 0.012 + y * 0.017) * 0.9 * f;
-            var isHot = false;
-
-            /* Cursor only wakes up dots that already belong to a corner cluster (f > 0) */
-            if (cursor) {
-              var d = Math.hypot(x - mx, y - my);
-              if (d < RADIUS) {
-                var g = 1 - d / RADIUS;
-                g = g * g * (3 - 2 * g) * strength * Math.min(1, f * 3);
-                r += g * 8;
-                isHot = g > 0.16;
-              }
-            }
-            if (r > 0.6) {
-              var p = isHot ? hot : base;
-              p.moveTo(x + r, y);
-              p.arc(x, y, r, 0, 6.2832);
-            }
+            var r = f * 7.5 + Math.sin(t * 0.0012 + x * 0.012 + y * 0.017) * 0.9 * f;
+            if (r <= 0.6) continue;
+            /* The cursor's recent direction of travel nudges corner dots along with it */
+            var px = x + vx * f, py = y + vy * f;
+            base.moveTo(px + r, py);
+            base.arc(px, py, r, 0, 6.2832);
           }
         }
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.17)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
         ctx.fill(base);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
-        ctx.fill(hot);
       }
 
       size();
@@ -537,19 +525,21 @@
       if (reduce) return;
 
       function point(e) {
-        tx = e.clientX; ty = e.clientY; target = 1;
-        if (strength < 0.02) { mx = tx; my = ty; }
+        if (lastX !== null) {
+          vx += (e.clientX - lastX) * 0.5;
+          vy += (e.clientY - lastY) * 0.5;
+          var mag = Math.hypot(vx, vy), cap = 26;
+          if (mag > cap) { vx = vx / mag * cap; vy = vy / mag * cap; }
+        }
+        lastX = e.clientX; lastY = e.clientY;
       }
       window.addEventListener('pointermove', point, { passive: true });
       window.addEventListener('pointerdown', point, { passive: true });
-      window.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') target = 0; }, { passive: true });
-      document.addEventListener('mouseleave', function () { target = 0; });
-      window.addEventListener('blur', function () { target = 0; });
+      document.addEventListener('mouseleave', function () { lastX = lastY = null; });
 
       function loop(t) {
-        mx += (tx - mx) * 0.14;
-        my += (ty - my) * 0.14;
-        strength += (target - strength) * 0.08;
+        vx *= 0.92;
+        vy *= 0.92;
         draw(t);
         requestAnimationFrame(loop);
       }
