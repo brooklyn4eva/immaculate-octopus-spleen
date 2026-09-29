@@ -19,6 +19,34 @@
   <div class="viewfinder" aria-hidden="true"></div>
   <canvas class="halftone" id="halftone" aria-hidden="true"></canvas>
 
+  <!-- Static studio details: lens calibration, film perforations, and an audio waveform. -->
+  <div class="broadcast-detail" aria-hidden="true">
+    <svg class="studio-calibration" viewBox="0 0 360 360" focusable="false">
+      <circle cx="180" cy="180" r="158"/>
+      <circle cx="180" cy="180" r="128"/>
+      <circle cx="180" cy="180" r="78"/>
+      <path d="M180 8v42m0 260v42M8 180h42m260 0h42M59 59l25 25m192 192l25 25M59 301l25-25m192-192l25-25"/>
+      <path class="studio-accent" d="M174 180h12m-6-6v12M180 22a158 158 0 0 1 112 46"/>
+    </svg>
+    <svg class="studio-film" viewBox="0 0 52 324" focusable="false">
+      <path d="M2 0v324M50 0v324M2 81h48M2 162h48M2 243h48"/>
+      <g>
+        <rect x="9" y="10" width="12" height="19" rx="3"/>
+        <rect x="9" y="50" width="12" height="19" rx="3"/>
+        <rect x="9" y="90" width="12" height="19" rx="3"/>
+        <rect x="9" y="130" width="12" height="19" rx="3"/>
+        <rect x="9" y="170" width="12" height="19" rx="3"/>
+        <rect x="9" y="210" width="12" height="19" rx="3"/>
+        <rect x="9" y="250" width="12" height="19" rx="3"/>
+        <rect x="9" y="290" width="12" height="19" rx="3"/>
+      </g>
+    </svg>
+    <svg class="studio-waveform" viewBox="0 0 320 90" focusable="false">
+      <path d="M0 45h320M0 78h320M20 74v8m40-8v8m40-8v8m40-8v8m40-8v8m40-8v8m40-8v8m40-8v8"/>
+      <path class="studio-accent" d="M8 41v8m8-10v12m8-16v20m8-25v30m8-20v10m8-14v18m8-28v38m8-48v58m8-65v72m8-61v50m8-40v30m8-22v14m8-11v8m8-16v24m8-33v42m8-51v60m8-51v42m8-33v24m8-19v14m8-18v22m8-29v36m8-45v54m8-46v38m8-29v20m8-14v8m8-12v16m8-22v28m8-36v44m8-52v60m8-51v42m8-35v28m8-22v16m8-13v10m8-9v8m8-10v12m8-10v8m8-6v4m8-6v8"/>
+    </svg>
+  </div>
+
   <header class="site-header">
     <a class="brand" href="#top">Chris Perez</a>
     <nav aria-label="Main">
@@ -68,8 +96,10 @@
       <div class="video-grid">
         <article class="video-card">
           <div class="float-el">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/68qRVW3hUKM" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="parallax-el">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/68qRVW3hUKM" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
           <h3>NewsVision, full episode</h3>
@@ -78,8 +108,10 @@
 
         <article class="video-card">
           <div class="float-el" style="animation-delay: -3.2s">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="parallax-el">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
           <h3>Featured package</h3>
@@ -132,15 +164,19 @@
 
       <div class="resume">
         <div class="resume-head">
-          <h3>Resume</h3>
+          <h3><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h8l4 4v14h-12.5z"/><path d="M14 3v4.5h4.5"/><path d="M9 12.5h6"/><path d="M9 15.5h6"/><path d="M9 18.5h3.5"/></svg>Resume</h3>
           <p class="resume-actions">
             <button class="button" id="resume-open" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg><span>Expand</span></button>
             <a class="text-link" data-resume-download href="#" download="Chris Perez Resume.pdf">Download PDF</a>
           </p>
         </div>
-        <div class="resume-mini float-el" id="resume-mini" style="animation-delay: -1.6s">
-          <div class="resume-scroll" id="resume-scroll" tabindex="0" role="region" aria-label="Resume preview, scrollable">
-            <img id="resume-inline-image" alt="Resume">
+        <div class="float-el" style="animation-delay: -1.6s">
+          <div class="parallax-el">
+            <div class="resume-mini" id="resume-mini">
+              <div class="resume-scroll" id="resume-scroll" tabindex="0" role="region" aria-label="Resume preview, scrollable">
+                <img id="resume-inline-image" alt="Resume">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -467,6 +503,69 @@
           });
       });
     })();
+  </script>
+  <script>
+    /* BEGIN MEDIA PARALLAX — remove this entire script to disable cursor motion.
+       The outer .float-el owns the figure-eight; only the inner wrapper moves here. */
+    (function () {
+      var elements = document.querySelectorAll('.float-el > .parallax-el');
+      if (!elements.length) return;
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var mouseAvailable = window.matchMedia('(hover: hover) and (pointer: fine)');
+      var targetX = 0, targetY = 0, x = 0, y = 0;
+      var frame = null, lastTime = null;
+      var MAX_X = 4, MAX_Y = 3, EASE_MS = 150;
+
+      function enabled() {
+        return mouseAvailable.matches && !reducedMotion.matches && !document.hidden;
+      }
+      function paint() {
+        elements.forEach(function (el, index) {
+          var depth = 1 - Math.min(index, 2) * 0.15;
+          el.style.transform = 'translate3d(' + (x * depth).toFixed(3) + 'px,' +
+            (y * depth).toFixed(3) + 'px,0)';
+        });
+      }
+      function tick(now) {
+        frame = null;
+        if (!enabled()) { reset(); return; }
+        var elapsed = lastTime === null ? 16.67 : Math.min(now - lastTime, 64);
+        lastTime = now;
+        var ease = 1 - Math.exp(-elapsed / EASE_MS);
+        x += (targetX - x) * ease;
+        y += (targetY - y) * ease;
+        if (Math.abs(targetX - x) + Math.abs(targetY - y) < 0.015) {
+          x = targetX; y = targetY;
+          lastTime = null;
+        } else {
+          frame = requestAnimationFrame(tick);
+        }
+        paint();
+      }
+      function schedule() {
+        if (frame === null && enabled()) frame = requestAnimationFrame(tick);
+      }
+      function center() { targetX = targetY = 0; schedule(); }
+      function reset() {
+        if (frame !== null) cancelAnimationFrame(frame);
+        frame = lastTime = null;
+        targetX = targetY = x = y = 0;
+        elements.forEach(function (el) { el.style.removeProperty('transform'); });
+      }
+      window.addEventListener('pointermove', function (event) {
+        if (event.pointerType !== 'mouse' || !enabled()) return;
+        targetX = Math.max(-1, Math.min(1, event.clientX / window.innerWidth * 2 - 1)) * MAX_X;
+        targetY = Math.max(-1, Math.min(1, event.clientY / window.innerHeight * 2 - 1)) * MAX_Y;
+        schedule();
+      }, { passive: true });
+      document.addEventListener('mouseleave', center);
+      window.addEventListener('blur', center);
+      window.addEventListener('resize', center);
+      document.addEventListener('visibilitychange', reset);
+      reducedMotion.addEventListener('change', reset);
+      mouseAvailable.addEventListener('change', reset);
+    })();
+    /* END MEDIA PARALLAX */
   </script>
   <script>
     /* Halftone dots: pop art corners that drift and nudge in the direction the cursor moves */
