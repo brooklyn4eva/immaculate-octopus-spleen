@@ -17,7 +17,7 @@
   <a class="skip" href="#work">Skip to videos</a>
   <div class="progress" aria-hidden="true"></div>
   <div class="viewfinder" aria-hidden="true"></div>
-  <div class="home-bg" id="home-bg" aria-hidden="true"><div class="hb-beams"></div><div class="hb-streaks"><i></i><i></i><i></i></div></div>
+  <div class="home-bg" id="home-bg" aria-hidden="true"><div class="hb-beams"></div><div class="hb-rays"><i></i></div></div>
 
 
 
@@ -1033,6 +1033,31 @@
       el.style.setProperty(open ? '--mx' : '--hx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
       el.style.setProperty(open ? '--my' : '--hy', (e.clientY / innerHeight * 2 - 1).toFixed(3));
     }, { passive: true });
+
+    /* Smooth scrolling: eased glide for mouse wheels, in both the work page and the experience pane */
+    (function () {
+      var goal = 0, pos = 0, raf = null, last = 0;
+      function el() { return open ? scroller : null; }
+      function read() { return open ? scroller.scrollTop : scrollY; }
+      function max() { return open ? scroller.scrollHeight - scroller.clientHeight : root.scrollHeight - innerHeight; }
+      function write(y) { if (open) scroller.scrollTop = y; else scrollTo(0, y); }
+      function step(now) {
+        var dt = Math.min(now - last, 50); last = now;
+        pos += (goal - pos) * (1 - Math.pow(0.001, dt / 420));
+        if (Math.abs(goal - pos) < 0.4) { pos = goal; write(pos); raf = null; return; }
+        write(pos); raf = requestAnimationFrame(step);
+      }
+      addEventListener('wheel', function (e) {
+        if (e.ctrlKey || e.deltaX || still.matches || document.body.classList.contains('modal-open')) return;
+        if (e.target.closest && e.target.closest('textarea, .resume-scroll, dialog')) return;
+        var wheel = e.deltaMode === 1 || (e.wheelDeltaY && e.wheelDeltaY % 120 === 0);
+        if (!wheel) return;
+        e.preventDefault();
+        if (raf === null) { pos = goal = read(); last = performance.now(); }
+        goal = Math.max(0, Math.min(max(), goal + (e.deltaMode === 1 ? e.deltaY * 40 : e.deltaY) * 1.1));
+        if (raf === null) raf = requestAnimationFrame(step);
+      }, { passive: false });
+    })();
 
     scroller.addEventListener('scroll', tlUpdate, { passive: true });
     addEventListener('resize', tlUpdate);
