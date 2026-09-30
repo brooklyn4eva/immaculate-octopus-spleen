@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css?v=20260930-7">
+  <link rel="stylesheet" href="style.css?v=20260930-8">
 </head>
 <body>
 
@@ -23,17 +23,8 @@
 
   <header class="site-header">
     <a class="brand" href="#top">Chris Perez</a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="#about"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M7 15c.5-1.6 1.8-2.4 3.2-2.4s2.7.8 3.2 2.4"/><path d="M14.5 9h4"/><path d="M14.5 12h4"/></svg><span>About</span></a></li>
-        <li><a href="#work"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="14" height="12" rx="2"/><path d="M16.5 10.5l5-3v9l-5-3"/></svg><span>Videos</span></a></li>
-        <li><a href="#experience"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/><path d="M10.5 13v1.6h3V13"/></svg><span>Experience</span></a></li>
-        <li><a href="#resume"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h8l4 4v14h-12.5z"/><path d="M14 3v4.5h4.5"/><path d="M9 12.5h6"/><path d="M9 15.5h6"/><path d="M9 18.5h3.5"/></svg><span>Resume</span></a></li>
-        <li><a href="#education"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z"/><path d="M6 11.8v4.7c0 1 2.7 2.3 6 2.3s6-1.3 6-2.3v-4.7"/><path d="M21 9.5V16"/></svg><span>Education</span></a></li>
-        <li><a href="#writing"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3.5 3.5v13.5H6z"/><path d="M10 13.2l6-6 2 2-6 6-2.4.4z"/></svg><span>Writing</span></a></li>
-        <li><a href="#contact"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg><span>Contact</span></a></li>
-      </ul>
-    </nav>
+    <nav aria-label="Main"><ul data-nav="work"><li><a href="#work"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="14" height="12" rx="2"/><path d="M16.5 10.5l5-3v9l-5-3"/></svg><span>Videos</span></a></li><li><a href="#writing"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3.5 3.5v13.5H6z"/><path d="M10 13.2l6-6 2 2-6 6-2.4.4z"/></svg><span>Writing</span></a></li><li><a href="#contact"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg><span>Contact</span></a></li></ul><ul data-nav="exp"><li><a href="#about"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M7 15c.5-1.6 1.8-2.4 3.2-2.4s2.7.8 3.2 2.4"/><path d="M14.5 9h4"/><path d="M14.5 12h4"/></svg><span>About</span></a></li><li><a href="#experience"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/><path d="M10.5 13v1.6h3V13"/></svg><span>Experience</span></a></li><li><a href="#education"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z"/><path d="M6 11.8v4.7c0 1 2.7 2.3 6 2.3s6-1.3 6-2.3v-4.7"/><path d="M21 9.5V16"/></svg><span>Education</span></a></li><li><a href="#resume"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h8l4 4v14h-12.5z"/><path d="M14 3v4.5h4.5"/><path d="M9 12.5h6"/><path d="M9 15.5h6"/><path d="M9 18.5h3.5"/></svg><span>Resume</span></a></li></ul></nav>
+    <button class="pane-switch" type="button" data-pane-go="toggle" aria-controls="pane-exp"><span class="ps-to-exp"><span class="ps-long">Experience and education</span><span class="ps-short">Experience</span></span><span class="ps-to-work"><span class="ps-long">Work and writing</span><span class="ps-short">Work</span></span><svg class="ps-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
   </header>
 
   <script>
@@ -64,20 +55,6 @@
           </div>
     </section>
 
-    <section id="about" class="section" aria-labelledby="about-title">
-      <h2 id="about-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M7 15c.5-1.6 1.8-2.4 3.2-2.4s2.7.8 3.2 2.4"/><path d="M14.5 9h4"/><path d="M14.5 12h4"/></svg><span class="heading-copy" data-type-duration="411"><span class="typing-label">About</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">A</span><span class="type-character" style="--type-delay:215ms">b</span><span class="type-character" style="--type-delay:280ms">o</span><span class="type-character" style="--type-delay:345ms">u</span><span class="type-character" style="--type-delay:410ms">t</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
-      <div class="about-grid">
-        <div class="prose">
-          <p>I am a News Associate on the Net Desk at NBC News, based at 30 Rock in New York. I graduated from the University of Miami in May 2026 with a bachelor's degree in Electronic Media and a minor in Motion Pictures. For two semesters I was Executive Producer of NewsVision, UMTV's live flagship newscast. Along the way I interned with the TODAY show in New York and at NBC News&#8217; Southern Bureau. I have worked in the control room, in the field, and on the desk.</p>
-        </div>
-        <dl class="facts">
-          <div><dt>Based in</dt><dd>New York City</dd></div>
-          <div><dt>Currently</dt><dd>News Associate, Net Desk, NBC News</dd></div>
-          <div><dt>Education</dt><dd>University of Miami, 2026</dd></div>
-          <div><dt>Previously</dt><dd>Executive Producer, NewsVision</dd></div>
-        </dl>
-      </div>
-    </section>
 
     <section id="work" class="section" aria-labelledby="work-title">
       <h2 id="work-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="14" height="12" rx="2"/><path d="M16.5 10.5l5-3v9l-5-3"/></svg><span class="heading-copy" data-type-duration="1201"><span class="typing-label">Broadcast and video work</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">B</span><span class="type-character" style="--type-delay:196ms">r</span><span class="type-character" style="--type-delay:241ms">o</span><span class="type-character" style="--type-delay:287ms">a</span><span class="type-character" style="--type-delay:333ms">d</span><span class="type-character" style="--type-delay:378ms">c</span><span class="type-character" style="--type-delay:424ms">a</span><span class="type-character" style="--type-delay:470ms">s</span><span class="type-character" style="--type-delay:515ms">t</span><span class="type-character" style="--type-delay:561ms"> </span><span class="type-character" style="--type-delay:607ms">a</span><span class="type-character" style="--type-delay:652ms">n</span><span class="type-character" style="--type-delay:698ms">d</span><span class="type-character" style="--type-delay:743ms"> </span><span class="type-character" style="--type-delay:789ms">v</span><span class="type-character" style="--type-delay:835ms">i</span><span class="type-character" style="--type-delay:880ms">d</span><span class="type-character" style="--type-delay:926ms">e</span><span class="type-character" style="--type-delay:972ms">o</span><span class="type-character" style="--type-delay:1017ms"> </span><span class="type-character" style="--type-delay:1063ms">w</span><span class="type-character" style="--type-delay:1109ms">o</span><span class="type-character" style="--type-delay:1154ms">r</span><span class="type-character" style="--type-delay:1200ms">k</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
@@ -87,7 +64,7 @@
           <div class="float-el">
             <div class="parallax-el">
               <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/68qRVW3hUKM" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/68qRVW3hUKM?enablejsapi=1" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -99,7 +76,7 @@
           <div class="float-el" style="animation-delay: -3.2s">
             <div class="parallax-el">
               <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw?enablejsapi=1" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -109,90 +86,8 @@
       </div>
     </section>
 
-    <section id="experience" class="section" aria-labelledby="exp-title">
-      <h2 id="exp-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/><path d="M10.5 13v1.6h3V13"/></svg><span class="heading-copy" data-type-duration="736"><span class="typing-label">Experience</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">E</span><span class="type-character" style="--type-delay:215ms">x</span><span class="type-character" style="--type-delay:280ms">p</span><span class="type-character" style="--type-delay:345ms">e</span><span class="type-character" style="--type-delay:410ms">r</span><span class="type-character" style="--type-delay:475ms">i</span><span class="type-character" style="--type-delay:540ms">e</span><span class="type-character" style="--type-delay:605ms">n</span><span class="type-character" style="--type-delay:670ms">c</span><span class="type-character" style="--type-delay:735ms">e</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
 
-      <div class="timeline-wrap">
-      <span class="timeline-progress" aria-hidden="true"></span>
-      <ol class="timeline">
-        <li>
-          <p class="when">September 2026 to Present</p>
-          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
-          <div>
-            <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
-            <p class="role">News Associate, Net Desk</p>
-            <p class="where">New York, New York</p>
-            <p>Mobilizes correspondents and field teams for more than 10 daily coverage requests, connecting NBC News programs with reporting resources and coordinating logistics for breaking and developing stories.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">September 2025 to April 2026</p>
-          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
-          <div>
-            <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
-            <p class="role">Southern News Bureau Intern</p>
-            <p class="where">Miami, Florida</p>
-            <p>Newsgathered across the southeast for programs in the news division, kept the national desk current through NewsConnect, and supported three correspondents a day with calls, interview bookings, and press conference logs.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">June 2025 to September 2025</p>
-          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
-          <div>
-            <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
-            <p class="role">TODAY Show Intern</p>
-            <p class="where">New York, New York</p>
-            <p>Audited more than 200 hours of programming to build 50 copyright cue sheets, transcribed and time coded over 20 interviews, and directed camera blocking and crowd movement for more than a dozen large productions, including the Citi Summer Concert Series.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">April 2025 to April 2026</p>
-          <img class="company-logo company-logo--umtv" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjEzMSA3IDMyMiAzMjIiIHdpZHRoPSIzMjIiIGhlaWdodD0iMzIyIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+Cjx0aXRsZSBpZD0idGl0bGUiPlVNVFYgbG9nbzwvdGl0bGU+CjxkZXNjIGlkPSJkZXNjIj5VTVRWIGNpcmN1bGFyIGdyYXkgbG9nbyB3aXRoIG9yYW5nZSBhbmQgZ3JlZW4gVSBtYXJrIGFuZCB3aGl0ZSBVTVRWIGxldHRlcmluZy48L2Rlc2M+Cgo8IS0tIFRyYW5zcGFyZW50IGNhbnZhczsgb3JpZ2luYWwgd2hpdGUgbGV0dGVyaW5nIGFuZCBVIGtleWxpbmUgcmV0YWluZWQuIC0tPgoKCjwhLS0gY2lyY3VsYXIgYmFkZ2UgLS0+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTYxIiBmaWxsPSIjNjI2MzY2Ii8+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTU0IiBmaWxsPSIjZmZmIi8+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTQzIiBmaWxsPSIjN2I3YzgwIi8+Cgo8IS0tIFUgd2hpdGUga2V5bGluZSAtLT4KPHBhdGggZmlsbD0iI2ZmZiIgZD0iCk0xOTUgODAgSDI0OSBWMTU4CkMyNDkgMTc0IDI2NCAxODEgMjkyIDE4MQpDMzIwIDE4MSAzMzQgMTc0IDMzNCAxNTgKVjgwIEgzODkgVjE2NgpDMzg5IDE4NyAzNTUgMTk4IDI5MiAxOTgKQzIyOSAxOTggMTk1IDE4NyAxOTUgMTY2IFoiLz4KCjwhLS0gb3JhbmdlIGhhbGYgLS0+CjxwYXRoIGZpbGw9IiNmNDczMjEiIGQ9IgpNMjAwIDg1IEgyNDQgVjE1OApDMjQ0IDE3NyAyNjAgMTg1IDI4OCAxODYKVjE5MwpDMjMzIDE5MiAyMDAgMTgzIDIwMCAxNjYgWiIvPgoKPCEtLSBncmVlbiBoYWxmIC0tPgo8cGF0aCBmaWxsPSIjMDA1MDMwIiBkPSIKTTMzOSA4NSBIMzg0IFYxNjYKQzM4NCAxODMgMzUxIDE5MiAyOTYgMTkzClYxODYKQzMyNCAxODUgMzM5IDE3NyAzMzkgMTU4IFoiLz4KCjwhLS0gVU1UViB3b3JkbWFyazsgcGF0aHMgcmF0aGVyIHRoYW4gZm9udCBkZXBlbmRlbmNpZXMgLS0+CjxnIGZpbGw9IiNmZmYiPgogIDwhLS0gVSAtLT4KICA8cGF0aCBkPSJNMjEzIDIxNCBIMjIwIFYyNjMKICAgICAgICAgICBDMjIwIDI3NCAyMjQgMjgwIDIzMiAyODAKICAgICAgICAgICBDMjQwIDI4MCAyNDQgMjc0IDI0NCAyNjMKICAgICAgICAgICBWMjE0IEgyNTEgVjI2NAogICAgICAgICAgIEMyNTEgMjc5IDI0NCAyODcgMjMyIDI4NwogICAgICAgICAgIEMyMjAgMjg3IDIxMyAyNzkgMjEzIDI2NCBaIi8+CiAgPCEtLSBNIC0tPgogIDxwYXRoIGQ9Ik0yNTggMjE0IEgyNjcgTDI3OSAyNjcgTDI5MSAyMTQgSDMwMCBWMjg2IEgyOTMgVjIyOQogICAgICAgICAgIEwyODIgMjg2IEgyNzYgTDI2NSAyMjkgVjI4NiBIMjU4IFoiLz4KICA8IS0tIFQgLS0+CiAgPHBhdGggZD0iTTMwNCAyMTQgSDM0MCBWMjIxIEgzMjYgVjI4NiBIMzE4IFYyMjEgSDMwNCBaIi8+CiAgPCEtLSBWIC0tPgogIDxwYXRoIGQ9Ik0zNDIgMjE0IEgzNTAgTDM2MiAyNzQgTDM3NCAyMTQgSDM4MiBMMzY3IDI4NiBIMzU3IFoiLz4KPC9nPgo8L3N2Zz4=" alt="" aria-hidden="true" width="44" height="44">
-          <div>
-            <h3><span class="heading-copy" data-type-duration="1061"><span class="typing-label">UMTV NewsVision</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">U</span><span class="type-character" style="--type-delay:215ms">M</span><span class="type-character" style="--type-delay:280ms">T</span><span class="type-character" style="--type-delay:345ms">V</span><span class="type-character" style="--type-delay:410ms"> </span><span class="type-character" style="--type-delay:475ms">N</span><span class="type-character" style="--type-delay:540ms">e</span><span class="type-character" style="--type-delay:605ms">w</span><span class="type-character" style="--type-delay:670ms">s</span><span class="type-character" style="--type-delay:735ms">V</span><span class="type-character" style="--type-delay:800ms">i</span><span class="type-character" style="--type-delay:865ms">s</span><span class="type-character" style="--type-delay:930ms">i</span><span class="type-character" style="--type-delay:995ms">o</span><span class="type-character" style="--type-delay:1060ms">n</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
-            <p class="role">Executive Producer</p>
-            <p class="where">Coral Gables, Florida</p>
-            <p>Produced weekly live broadcasts and led a 25 member cast and crew. Conceived and launched Coast to Coast, a segment on the first 100 days of the second Trump administration.</p>
-          </div>
-        </li>
-      </ol>
-      </div>
 
-    </section>
-
-    <section id="resume" class="section resume-section" aria-labelledby="resume-title">
-      <div class="resume">
-        <div class="resume-head">
-          <h2 id="resume-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h8l4 4v14h-12.5z"/><path d="M14 3v4.5h4.5"/><path d="M9 12.5h6"/><path d="M9 15.5h6"/><path d="M9 18.5h3.5"/></svg><span class="heading-copy" data-type-duration="476"><span class="typing-label">Resume</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">R</span><span class="type-character" style="--type-delay:215ms">e</span><span class="type-character" style="--type-delay:280ms">s</span><span class="type-character" style="--type-delay:345ms">u</span><span class="type-character" style="--type-delay:410ms">m</span><span class="type-character" style="--type-delay:475ms">e</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
-          <p class="resume-actions">
-            <button class="button" id="resume-open" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg><span>Expand</span></button>
-            <a class="text-link" data-resume-download href="#" download="Chris Perez Resume.pdf">Download PDF</a>
-          </p>
-        </div>
-        <div class="float-el" style="animation-delay: -1.6s">
-          <div class="parallax-el">
-            <div class="resume-mini" id="resume-mini">
-              <div class="resume-scroll" id="resume-scroll" tabindex="0" role="region" aria-label="Resume preview, scrollable">
-                <img id="resume-inline-image" alt="Resume">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="education" class="section" aria-labelledby="edu-title">
-      <h2 id="edu-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z"/><path d="M6 11.8v4.7c0 1 2.7 2.3 6 2.3s6-1.3 6-2.3v-4.7"/><path d="M21 9.5V16"/></svg><span class="heading-copy" data-type-duration="671"><span class="typing-label">Education</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">E</span><span class="type-character" style="--type-delay:215ms">d</span><span class="type-character" style="--type-delay:280ms">u</span><span class="type-character" style="--type-delay:345ms">c</span><span class="type-character" style="--type-delay:410ms">a</span><span class="type-character" style="--type-delay:475ms">t</span><span class="type-character" style="--type-delay:540ms">i</span><span class="type-character" style="--type-delay:605ms">o</span><span class="type-character" style="--type-delay:670ms">n</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
-      <div class="edu">
-        <p class="when">May 2026</p>
-        <div>
-          <h3><span class="heading-copy" data-type-duration="1201"><span class="typing-label">University of Miami</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">U</span><span class="type-character" style="--type-delay:208ms">n</span><span class="type-character" style="--type-delay:267ms">i</span><span class="type-character" style="--type-delay:325ms">v</span><span class="type-character" style="--type-delay:383ms">e</span><span class="type-character" style="--type-delay:442ms">r</span><span class="type-character" style="--type-delay:500ms">s</span><span class="type-character" style="--type-delay:558ms">i</span><span class="type-character" style="--type-delay:617ms">t</span><span class="type-character" style="--type-delay:675ms">y</span><span class="type-character" style="--type-delay:733ms"> </span><span class="type-character" style="--type-delay:792ms">o</span><span class="type-character" style="--type-delay:850ms">f</span><span class="type-character" style="--type-delay:908ms"> </span><span class="type-character" style="--type-delay:967ms">M</span><span class="type-character" style="--type-delay:1025ms">i</span><span class="type-character" style="--type-delay:1083ms">a</span><span class="type-character" style="--type-delay:1142ms">m</span><span class="type-character" style="--type-delay:1200ms">i</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
-          <p class="role">Bachelor of Science, Electronic Media</p>
-          <p class="where">Coral Gables, Florida</p>
-          <p>Minor in Motion Pictures.</p>
-        </div>
-      </div>
-    </section>
 
     <section id="writing" class="section" aria-labelledby="writing-title">
       <h2 id="writing-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3.5 3.5v13.5H6z"/><path d="M10 13.2l6-6 2 2-6 6-2.4.4z"/></svg><span class="heading-copy" data-type-duration="541"><span class="typing-label">Writing</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">W</span><span class="type-character" style="--type-delay:215ms">r</span><span class="type-character" style="--type-delay:280ms">i</span><span class="type-character" style="--type-delay:345ms">t</span><span class="type-character" style="--type-delay:410ms">i</span><span class="type-character" style="--type-delay:475ms">n</span><span class="type-character" style="--type-delay:540ms">g</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
@@ -259,6 +154,119 @@
     <p>&copy; <span id="year">2026</span> Chris Perez. New York City.</p>
   </footer>
 
+
+
+  <div class="exp-pane" id="pane-exp" role="region" aria-label="Experience and education" inert>
+    <div class="exp-bg" aria-hidden="true"></div>
+    <div class="exp-scroll" id="exp-scroll">
+    <section id="about" class="section" aria-labelledby="about-title">
+      <h2 id="about-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M7 15c.5-1.6 1.8-2.4 3.2-2.4s2.7.8 3.2 2.4"/><path d="M14.5 9h4"/><path d="M14.5 12h4"/></svg><span class="heading-copy" data-type-duration="411"><span class="typing-label">About</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">A</span><span class="type-character" style="--type-delay:215ms">b</span><span class="type-character" style="--type-delay:280ms">o</span><span class="type-character" style="--type-delay:345ms">u</span><span class="type-character" style="--type-delay:410ms">t</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
+      <div class="about-grid">
+        <div class="prose">
+          <p>I am a News Associate on the Net Desk at NBC News, based at 30 Rock in New York. I graduated from the University of Miami in May 2026 with a bachelor's degree in Electronic Media and a minor in Motion Pictures. For two semesters I was Executive Producer of NewsVision, UMTV's live flagship newscast. Along the way I interned with the TODAY show in New York and at NBC News&#8217; Southern Bureau. I have worked in the control room, in the field, and on the desk.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>New York City</dd></div>
+          <div><dt>Currently</dt><dd>News Associate, Net Desk, NBC News</dd></div>
+          <div><dt>Education</dt><dd>University of Miami, 2026</dd></div>
+          <div><dt>Previously</dt><dd>Executive Producer, NewsVision</dd></div>
+        </dl>
+      </div>
+    </section>
+    <section id="experience" class="section" aria-labelledby="exp-title">
+      <h2 id="exp-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/><path d="M10.5 13v1.6h3V13"/></svg><span class="heading-copy" data-type-duration="736"><span class="typing-label">Experience</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">E</span><span class="type-character" style="--type-delay:215ms">x</span><span class="type-character" style="--type-delay:280ms">p</span><span class="type-character" style="--type-delay:345ms">e</span><span class="type-character" style="--type-delay:410ms">r</span><span class="type-character" style="--type-delay:475ms">i</span><span class="type-character" style="--type-delay:540ms">e</span><span class="type-character" style="--type-delay:605ms">n</span><span class="type-character" style="--type-delay:670ms">c</span><span class="type-character" style="--type-delay:735ms">e</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
+
+      <div class="timeline-wrap">
+      <span class="timeline-progress" aria-hidden="true"></span>
+      <ol class="timeline">
+        <li>
+          <p class="when">September 2026 to Present</p>
+          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
+          <div>
+            <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
+            <p class="role">News Associate, Net Desk</p>
+            <p class="where">New York, New York</p>
+            <p>Mobilizes correspondents and field teams for more than 10 daily coverage requests, connecting NBC News programs with reporting resources and coordinating logistics for breaking and developing stories.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">September 2025 to April 2026</p>
+          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
+          <div>
+            <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
+            <p class="role">Southern News Bureau Intern</p>
+            <p class="where">Miami, Florida</p>
+            <p>Newsgathered across the southeast for programs in the news division, kept the national desk current through NewsConnect, and supported three correspondents a day with calls, interview bookings, and press conference logs.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">June 2025 to September 2025</p>
+          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
+          <div>
+            <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
+            <p class="role">TODAY Show Intern</p>
+            <p class="where">New York, New York</p>
+            <p>Audited more than 200 hours of programming to build 50 copyright cue sheets, transcribed and time coded over 20 interviews, and directed camera blocking and crowd movement for more than a dozen large productions, including the Citi Summer Concert Series.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">April 2025 to April 2026</p>
+          <img class="company-logo company-logo--umtv" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjEzMSA3IDMyMiAzMjIiIHdpZHRoPSIzMjIiIGhlaWdodD0iMzIyIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+Cjx0aXRsZSBpZD0idGl0bGUiPlVNVFYgbG9nbzwvdGl0bGU+CjxkZXNjIGlkPSJkZXNjIj5VTVRWIGNpcmN1bGFyIGdyYXkgbG9nbyB3aXRoIG9yYW5nZSBhbmQgZ3JlZW4gVSBtYXJrIGFuZCB3aGl0ZSBVTVRWIGxldHRlcmluZy48L2Rlc2M+Cgo8IS0tIFRyYW5zcGFyZW50IGNhbnZhczsgb3JpZ2luYWwgd2hpdGUgbGV0dGVyaW5nIGFuZCBVIGtleWxpbmUgcmV0YWluZWQuIC0tPgoKCjwhLS0gY2lyY3VsYXIgYmFkZ2UgLS0+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTYxIiBmaWxsPSIjNjI2MzY2Ii8+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTU0IiBmaWxsPSIjZmZmIi8+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTQzIiBmaWxsPSIjN2I3YzgwIi8+Cgo8IS0tIFUgd2hpdGUga2V5bGluZSAtLT4KPHBhdGggZmlsbD0iI2ZmZiIgZD0iCk0xOTUgODAgSDI0OSBWMTU4CkMyNDkgMTc0IDI2NCAxODEgMjkyIDE4MQpDMzIwIDE4MSAzMzQgMTc0IDMzNCAxNTgKVjgwIEgzODkgVjE2NgpDMzg5IDE4NyAzNTUgMTk4IDI5MiAxOTgKQzIyOSAxOTggMTk1IDE4NyAxOTUgMTY2IFoiLz4KCjwhLS0gb3JhbmdlIGhhbGYgLS0+CjxwYXRoIGZpbGw9IiNmNDczMjEiIGQ9IgpNMjAwIDg1IEgyNDQgVjE1OApDMjQ0IDE3NyAyNjAgMTg1IDI4OCAxODYKVjE5MwpDMjMzIDE5MiAyMDAgMTgzIDIwMCAxNjYgWiIvPgoKPCEtLSBncmVlbiBoYWxmIC0tPgo8cGF0aCBmaWxsPSIjMDA1MDMwIiBkPSIKTTMzOSA4NSBIMzg0IFYxNjYKQzM4NCAxODMgMzUxIDE5MiAyOTYgMTkzClYxODYKQzMyNCAxODUgMzM5IDE3NyAzMzkgMTU4IFoiLz4KCjwhLS0gVU1UViB3b3JkbWFyazsgcGF0aHMgcmF0aGVyIHRoYW4gZm9udCBkZXBlbmRlbmNpZXMgLS0+CjxnIGZpbGw9IiNmZmYiPgogIDwhLS0gVSAtLT4KICA8cGF0aCBkPSJNMjEzIDIxNCBIMjIwIFYyNjMKICAgICAgICAgICBDMjIwIDI3NCAyMjQgMjgwIDIzMiAyODAKICAgICAgICAgICBDMjQwIDI4MCAyNDQgMjc0IDI0NCAyNjMKICAgICAgICAgICBWMjE0IEgyNTEgVjI2NAogICAgICAgICAgIEMyNTEgMjc5IDI0NCAyODcgMjMyIDI4NwogICAgICAgICAgIEMyMjAgMjg3IDIxMyAyNzkgMjEzIDI2NCBaIi8+CiAgPCEtLSBNIC0tPgogIDxwYXRoIGQ9Ik0yNTggMjE0IEgyNjcgTDI3OSAyNjcgTDI5MSAyMTQgSDMwMCBWMjg2IEgyOTMgVjIyOQogICAgICAgICAgIEwyODIgMjg2IEgyNzYgTDI2NSAyMjkgVjI4NiBIMjU4IFoiLz4KICA8IS0tIFQgLS0+CiAgPHBhdGggZD0iTTMwNCAyMTQgSDM0MCBWMjIxIEgzMjYgVjI4NiBIMzE4IFYyMjEgSDMwNCBaIi8+CiAgPCEtLSBWIC0tPgogIDxwYXRoIGQ9Ik0zNDIgMjE0IEgzNTAgTDM2MiAyNzQgTDM3NCAyMTQgSDM4MiBMMzY3IDI4NiBIMzU3IFoiLz4KPC9nPgo8L3N2Zz4=" alt="" aria-hidden="true" width="44" height="44">
+          <div>
+            <h3><span class="heading-copy" data-type-duration="1061"><span class="typing-label">UMTV NewsVision</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">U</span><span class="type-character" style="--type-delay:215ms">M</span><span class="type-character" style="--type-delay:280ms">T</span><span class="type-character" style="--type-delay:345ms">V</span><span class="type-character" style="--type-delay:410ms"> </span><span class="type-character" style="--type-delay:475ms">N</span><span class="type-character" style="--type-delay:540ms">e</span><span class="type-character" style="--type-delay:605ms">w</span><span class="type-character" style="--type-delay:670ms">s</span><span class="type-character" style="--type-delay:735ms">V</span><span class="type-character" style="--type-delay:800ms">i</span><span class="type-character" style="--type-delay:865ms">s</span><span class="type-character" style="--type-delay:930ms">i</span><span class="type-character" style="--type-delay:995ms">o</span><span class="type-character" style="--type-delay:1060ms">n</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
+            <p class="role">Executive Producer</p>
+            <p class="where">Coral Gables, Florida</p>
+            <p>Produced weekly live broadcasts and led a 25 member cast and crew. Conceived and launched Coast to Coast, a segment on the first 100 days of the second Trump administration.</p>
+          </div>
+        </li>
+      </ol>
+      </div>
+
+    </section>
+    <section id="education" class="section" aria-labelledby="edu-title">
+      <h2 id="edu-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z"/><path d="M6 11.8v4.7c0 1 2.7 2.3 6 2.3s6-1.3 6-2.3v-4.7"/><path d="M21 9.5V16"/></svg><span class="heading-copy" data-type-duration="671"><span class="typing-label">Education</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">E</span><span class="type-character" style="--type-delay:215ms">d</span><span class="type-character" style="--type-delay:280ms">u</span><span class="type-character" style="--type-delay:345ms">c</span><span class="type-character" style="--type-delay:410ms">a</span><span class="type-character" style="--type-delay:475ms">t</span><span class="type-character" style="--type-delay:540ms">i</span><span class="type-character" style="--type-delay:605ms">o</span><span class="type-character" style="--type-delay:670ms">n</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
+      <div class="edu">
+        <p class="when">May 2026</p>
+        <div>
+          <h3><span class="heading-copy" data-type-duration="1201"><span class="typing-label">University of Miami</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">U</span><span class="type-character" style="--type-delay:208ms">n</span><span class="type-character" style="--type-delay:267ms">i</span><span class="type-character" style="--type-delay:325ms">v</span><span class="type-character" style="--type-delay:383ms">e</span><span class="type-character" style="--type-delay:442ms">r</span><span class="type-character" style="--type-delay:500ms">s</span><span class="type-character" style="--type-delay:558ms">i</span><span class="type-character" style="--type-delay:617ms">t</span><span class="type-character" style="--type-delay:675ms">y</span><span class="type-character" style="--type-delay:733ms"> </span><span class="type-character" style="--type-delay:792ms">o</span><span class="type-character" style="--type-delay:850ms">f</span><span class="type-character" style="--type-delay:908ms"> </span><span class="type-character" style="--type-delay:967ms">M</span><span class="type-character" style="--type-delay:1025ms">i</span><span class="type-character" style="--type-delay:1083ms">a</span><span class="type-character" style="--type-delay:1142ms">m</span><span class="type-character" style="--type-delay:1200ms">i</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
+          <p class="role">Bachelor of Science, Electronic Media</p>
+          <p class="where">Coral Gables, Florida</p>
+          <p>Minor in Motion Pictures.</p>
+        </div>
+      </div>
+    </section>
+    <section id="resume" class="section resume-section" aria-labelledby="resume-title">
+      <div class="resume">
+        <div class="resume-head">
+          <h2 id="resume-title"><svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h8l4 4v14h-12.5z"/><path d="M14 3v4.5h4.5"/><path d="M9 12.5h6"/><path d="M9 15.5h6"/><path d="M9 18.5h3.5"/></svg><span class="heading-copy" data-type-duration="476"><span class="typing-label">Resume</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">R</span><span class="type-character" style="--type-delay:215ms">e</span><span class="type-character" style="--type-delay:280ms">s</span><span class="type-character" style="--type-delay:345ms">u</span><span class="type-character" style="--type-delay:410ms">m</span><span class="type-character" style="--type-delay:475ms">e</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h2>
+          <p class="resume-actions">
+            <button class="button" id="resume-open" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg><span>Expand</span></button>
+            <a class="text-link" data-resume-download href="#" download="Chris Perez Resume.pdf">Download PDF</a>
+          </p>
+        </div>
+        <div class="float-el" style="animation-delay: -1.6s">
+          <div class="parallax-el">
+            <div class="resume-mini" id="resume-mini">
+              <div class="resume-scroll" id="resume-scroll" tabindex="0" role="region" aria-label="Resume preview, scrollable">
+                <img id="resume-inline-image" alt="Resume">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      <footer class="site-footer"><p>&copy; <span class="year2">2026</span> Chris Perez. New York City.</p></footer>
+    </div>
+  </div>
+
+  <button class="edge-tab" type="button" data-pane-go="toggle" aria-label="Switch page" aria-controls="pane-exp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    <span class="et-exp">Experience</span><span class="et-work">Work</span>
+  </button>
+  <div class="pager" role="group" aria-label="Pages">
+    <button type="button" data-pane-go="work" aria-label="Work and writing" aria-current="true"></button>
+    <button type="button" data-pane-go="exp" aria-label="Experience and education" aria-current="false"></button>
+  </div>
 
   <!-- Static studio details. Critical positioning is inline so older cached CSS
        cannot turn these decorations into space above the header. -->
@@ -503,9 +511,6 @@
         var phase = Math.min(y / Math.max(geometry.heroHeight, 1), 1);
         heroMotion.style.transform = 'translate3d(0,' + Math.min(y * 0.08, 24) + 'px,0)';
         heroMotion.style.opacity = String(1 - phase * 0.8);
-        var fill = Math.max(0, Math.min(1, (mid - geometry.timelineTop) / Math.max(geometry.timelineHeight, 1)));
-        rail.style.transform = 'scaleY(' + fill + ')';
-        steps.forEach(function (li, index) { li.classList.toggle('reached', geometry.steps[index] < mid); });
         ticking = false;
       }
       function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
@@ -895,6 +900,139 @@
   document.addEventListener('mouseleave', function () { lastX = lastY = null; });
 })();
 
+  </script>
+
+  <script>
+  /* TWO PAGES, ONE URL: the experience pane slides over the work page.
+     Touch swipe follows your finger, trackpad swipe and the buttons animate it,
+     and every pane change is a history entry so Back works. */
+  (function () {
+    var root = document.documentElement, exp = document.getElementById('pane-exp');
+    var scroller = document.getElementById('exp-scroll');
+    var main = document.querySelector('main'), foot = document.querySelector('body > .site-footer');
+    var prog = document.querySelector('.progress'), pager = document.querySelectorAll('.pager button');
+    var rail = document.querySelector('.timeline-progress'), tl = document.querySelector('.timeline');
+    var steps = document.querySelectorAll('.timeline li');
+    var open = false, hideTimer, lockUntil = 0, t0 = null;
+    document.querySelectorAll('.year2').forEach(function (y) { y.textContent = new Date().getFullYear(); });
+
+    function pause() {
+      document.querySelectorAll('iframe[src*="youtube"]').forEach(function (f) {
+        try { f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); } catch (e) {}
+      });
+    }
+    function tlUpdate() {
+      var r = tl.getBoundingClientRect(), mid = innerHeight * 0.6;
+      rail.style.transform = 'scaleY(' + Math.max(0, Math.min(1, (mid - r.top) / Math.max(r.height, 1))) + ')';
+      steps.forEach(function (li) { li.classList.toggle('reached', li.getBoundingClientRect().top < mid); });
+      if (open) {
+        var m = scroller.scrollHeight - scroller.clientHeight;
+        prog.style.transform = 'scaleX(' + (m > 0 ? scroller.scrollTop / m : 0) + ')';
+      }
+    }
+    function apply(o) {
+      open = o; root.classList.toggle('exp-open', o);
+      [main, foot].forEach(function (el) { if (o) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
+      if (o) { exp.removeAttribute('inert'); pause(); } else {
+        exp.setAttribute('inert', '');
+        prog.style.transform = 'scaleX(' + Math.min(1, scrollY / Math.max(root.scrollHeight - innerHeight, 1)) + ')';
+      }
+      pager.forEach(function (b, i) { b.setAttribute('aria-current', String((i === 1) === o)); });
+      tlUpdate();
+    }
+    function go(o, instant) {
+      clearTimeout(hideTimer);
+      root.classList.add('pane-live');
+      if (instant) root.classList.add('no-anim');
+      root.style.setProperty('--p', o ? 1 : 0);
+      apply(o);
+      if (instant) { void exp.offsetWidth; requestAnimationFrame(function () { root.classList.remove('no-anim'); }); }
+      if (!o) hideTimer = setTimeout(function () { if (!open) root.classList.remove('pane-live'); }, 800);
+    }
+    function push(hash) { if (location.hash !== hash) history.pushState(null, '', hash); }
+    function toggle(want) { if (want === open) return; go(want); push(want ? '#about' : '#top'); }
+
+    document.querySelectorAll('[data-pane-go]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = b.dataset.paneGo; toggle(v === 'toggle' ? !open : v === 'exp');
+      });
+    });
+
+    /* Links that point into the other pane: switch first, then jump */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || e.defaultPrevented || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      var id = a.getAttribute('href'); if (id.length < 2) return;
+      var t = document.getElementById(id.slice(1)); if (!t) return;
+      var inExp = exp.contains(t);
+      if (!inExp && !open) return; /* the normal smooth scroll handles it */
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (inExp !== open) go(inExp);
+      if (inExp) t.scrollIntoView({ behavior: open ? 'smooth' : 'auto' });
+      else if (id === '#top') scrollTo(0, 0);
+      else t.scrollIntoView();
+      push(id);
+    }, true);
+
+    function sync(instant) {
+      var h = location.hash.slice(1), t = h && document.getElementById(h), o = !!(t && exp.contains(t));
+      if (o !== open) go(o, instant);
+      if (o && t) t.scrollIntoView();
+    }
+    addEventListener('popstate', function () { sync(false); });
+
+    /* Swipe: thumb moves right to left to reach experience, left to right to come back */
+    addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1 || document.body.classList.contains('modal-open') ||
+          e.target.closest('input, textarea, select, [contenteditable]')) { t0 = null; return; }
+      var t = e.touches[0]; t0 = { x: t.clientX, y: t.clientY, t: performance.now(), lock: null, p: open ? 1 : 0 };
+    }, { passive: true });
+    addEventListener('touchmove', function (e) {
+      if (!t0) return;
+      var t = e.touches[0], dx = t.clientX - t0.x, dy = t.clientY - t0.y;
+      if (!t0.lock) {
+        if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+        t0.lock = Math.abs(dx) > Math.abs(dy) * 1.4 ? 'x' : 'y';
+        if (t0.lock === 'x') { clearTimeout(hideTimer); root.classList.add('pane-live', 'dragging'); }
+      }
+      if (t0.lock !== 'x') return;
+      if (e.cancelable) e.preventDefault();
+      t0.p = Math.max(0, Math.min(1, open ? 1 + dx / innerWidth : -dx / innerWidth));
+      root.style.setProperty('--p', t0.p.toFixed(3));
+    }, { passive: false });
+    function release(e, cancelled) {
+      if (!t0 || t0.lock !== 'x') { t0 = null; return; }
+      var t = e.changedTouches[0], v = (t.clientX - t0.x) / Math.max(performance.now() - t0.t, 1), want = open;
+      if (!cancelled) {
+        if (!open && (t0.p > 0.2 || v < -0.5)) want = true;
+        if (open && (t0.p < 0.8 || v > 0.5)) want = false;
+      }
+      t0 = null; root.classList.remove('dragging');
+      var changed = want !== open; go(want); if (changed) push(want ? '#about' : '#top');
+    }
+    addEventListener('touchend', function (e) { release(e, false); }, { passive: true });
+    addEventListener('touchcancel', function (e) { release(e, true); }, { passive: true });
+
+    /* Trackpad two finger swipe */
+    addEventListener('wheel', function (e) {
+      if (performance.now() < lockUntil || document.body.classList.contains('modal-open')) return;
+      if (Math.abs(e.deltaX) < 24 || Math.abs(e.deltaX) < Math.abs(e.deltaY) * 1.5) return;
+      var want = e.deltaX > 0; if (want === open) return;
+      lockUntil = performance.now() + 1000; toggle(want);
+    }, { passive: true });
+
+    /* Mouse parallax for the experience background */
+    var mouse = matchMedia('(hover: hover) and (pointer: fine)'), still = matchMedia('(prefers-reduced-motion: reduce)');
+    addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse' || !open || !mouse.matches || still.matches) return;
+      exp.style.setProperty('--mx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
+      exp.style.setProperty('--my', (e.clientY / innerHeight * 2 - 1).toFixed(3));
+    }, { passive: true });
+
+    scroller.addEventListener('scroll', tlUpdate, { passive: true });
+    addEventListener('resize', tlUpdate);
+    sync(true);
+  })();
   </script>
 </body>
 </html>
