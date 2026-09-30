@@ -138,7 +138,7 @@ a:focus-visible, .button:focus-visible {
   border-top: 1px solid var(--line);
 }
 
-.section > h2 {
+:is(.section > h2, .section-heading > h2) {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -162,28 +162,27 @@ a:focus-visible, .button:focus-visible {
   margin-bottom: 2.5rem;
 }
 
-/* On roomy screens, the two longer work sections hold their headings in view. */
+/* A stationary, opaque shell separates sticky titles from composited media below.
+   Only the inner text receives the normal reveal; no masks or translucent overlay. */
+.section-heading { margin-bottom: 1.5rem; }
+.section-heading > h2 { margin-bottom: 0; }
 @media (min-width: 720px) and (min-height: 600px) {
-  html.js :is(#work, #experience) > h2 {
+  .js .section-heading {
     position: sticky;
-    top: calc(var(--header-height, 4.1rem) + 18px);
+    top: var(--header-height, 4.1rem);
     z-index: 4;
+    background: var(--bg);
+    margin: -16px calc(0px - var(--gutter)) 0.5rem;
+    padding: 16px var(--gutter);
+    overflow: clip;
+    transform: translateZ(0);
     isolation: isolate;
-  }
-  html.js :is(#work, #experience) > h2::before {
-    content: "";
-    position: absolute;
-    inset: -1rem calc(0px - var(--gutter)) -1.25rem;
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(var(--bg) 0%, var(--bg) 72%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
   }
 }
 
 /* ---------- Hero ---------- */
 .hero {
+  overflow: clip;
   padding-block: clamp(4rem, 12vw, 9rem) clamp(3.5rem, 8vw, 6rem);
 }
 
@@ -289,13 +288,11 @@ a:focus-visible, .button:focus-visible {
 .js .float-el {
   transform: translate3d(0, 0, 0);
   will-change: transform;
+  backface-visibility: hidden;
 }
 
-/* Scroll depth has its own outer layer, independent of the existing figure-eight. */
-.js .scroll-stage { will-change: transform; transform-origin: center; }
-
 /* MEDIA PARALLAX: transform is set by the isolated script in index.html. */
-.parallax-el { transform: translate3d(0, 0, 0); will-change: transform; }
+.parallax-el { transform: translate3d(0, 0, 0); will-change: transform; backface-visibility: hidden; }
 
 .video-frame {
   aspect-ratio: 16 / 9;
@@ -308,6 +305,8 @@ a:focus-visible, .button:focus-visible {
   width: 100%;
   height: 100%;
   border: 0;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .video-card h3 { font-size: var(--step-1); margin-bottom: 0.4rem; }
@@ -319,17 +318,23 @@ a:focus-visible, .button:focus-visible {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-left: 2px solid var(--line);
+  border-left: 2px solid transparent;
   position: relative;
 }
-.timeline::before {
-  content: "";
+.timeline-wrap {
+  position: relative;
+  background: linear-gradient(var(--line), var(--line)) left / 2px 100% no-repeat;
+}
+.timeline-progress {
   position: absolute;
-  left: -2px;
+  left: 0;
   top: 0;
   width: 2px;
-  height: var(--fill, 0px);
+  height: 100%;
   background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  pointer-events: none;
 }
 
 .timeline li {
@@ -381,11 +386,7 @@ a:focus-visible, .button:focus-visible {
 .resume-link { margin: 3rem 0 0; }
 
 /* ---------- Resume ---------- */
-.resume {
-  margin-top: clamp(3rem, 6vw, 5rem);
-  padding-top: clamp(2rem, 4vw, 3rem);
-  border-top: 1px solid var(--line);
-}
+.resume { margin: 0; padding: 0; border: 0; }
 .resume-head {
   display: flex;
   flex-wrap: wrap;
@@ -395,7 +396,7 @@ a:focus-visible, .button:focus-visible {
   max-width: 720px;
   margin-bottom: 1.5rem;
 }
-.resume-head h3 {
+.resume-head :is(h2, h3) {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -897,16 +898,9 @@ body.modal-open { overflow: hidden; }
 .js .typing-complete .type-character,
 .js .typing-complete .typing-cursor { visibility: visible; }
 
-/* Video frames wipe open */
-.js .video-frame {
-  clip-path: inset(0 0 100% 0 round 6px);
-  transition: clip-path 1.1s var(--ease-out) 0.2s, transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
-}
-.js .video-card.is-visible .video-frame { clip-path: inset(0 0 0 0 round 6px); }
-.video-card:hover .video-frame {
-  transform: translateY(-4px) scale(1.015);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-}
+/* The card still reveals on entry. Keep iframe clipping and scale static so its
+   pixels do not get repeatedly re-rasterized during floating or sticky overlaps. */
+.video-card:hover .video-frame { box-shadow: 0 0 0 1px rgba(244, 182, 63, 0.35); }
 .article-card { transition: border-color 0.4s; }
 .article-card:hover { border-color: var(--accent); }
 
@@ -940,17 +934,17 @@ body::before {
 }
 
 /* One orchestrated intro for the hero */
-.js .hero > * {
+.js .hero-motion > * {
   opacity: 0;
   transform: translateY(24px);
   animation: rise 1s var(--ease-out) forwards;
 }
-.js .hero > :nth-child(1) { animation-delay: 0.1s; }
-.js .hero > :nth-child(2) { animation-delay: 0.25s; }
-.js .hero > :nth-child(3) { animation-delay: 0.45s; }
-.js .hero > :nth-child(4) { animation-delay: 0.6s; }
+.js .hero-motion > :nth-child(1) { animation-delay: 0.1s; }
+.js .hero-motion > :nth-child(2) { animation-delay: 0.25s; }
+.js .hero-motion > :nth-child(3) { animation-delay: 0.45s; }
+.js .hero-motion > :nth-child(4) { animation-delay: 0.6s; }
 
-.js .hero > h1 { opacity: 1; transform: none; animation: none; }
+.js .hero-motion > h1 { opacity: 1; transform: none; animation: none; }
 /* Quick name typing without moving the heading or changing its layout.
    The full name stays available to screen readers and without JavaScript. */
 .name-text { display: inline-block; }
@@ -1039,14 +1033,7 @@ body::after {
   background:
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px 3px),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain 1.2s steps(1) infinite;
-}
-@keyframes grain {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-3%, 2%); }
-  40%  { transform: translate(-2%, -3%); }
-  60%  { transform: translate(3%, 1%); }
-  80%  { transform: translate(1%, -2%); }
+  /* Static texture avoids a stepped full-screen overlay jumping over moving media. */
 }
 
 /* Camera viewfinder corners */
@@ -1071,11 +1058,12 @@ body::after {
 
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
+  .hero-motion { transform: none !important; opacity: 1 !important; }
   html:not(.js) { scroll-behavior: auto; }
   .dot, body::before { animation: none; }
   .button { transition: none; }
   .js .reveal,
-  .js .hero > *,
+  .js .hero-motion > *,
   .js .name-character,
   .js .heading-copy .type-character,
   .js .typing-active .type-character,
@@ -1097,9 +1085,7 @@ body::after {
   .js .contact-form .form-actions { opacity: 1; transform: none; transition: none; }
   .js .float-el { transform: none; will-change: auto; }
   .parallax-el { transform: none !important; will-change: auto; }
-  .js .scroll-stage { transform: none !important; will-change: auto; }
-  html.js :is(#work, #experience) > h2 { position: static; }
-  html.js :is(#work, #experience) > h2::before { display: none; }
+  .js .section-heading { position: static; transform: none; background: transparent; }
   .field input + label,
   .field textarea + label,
   .dz-icon,
