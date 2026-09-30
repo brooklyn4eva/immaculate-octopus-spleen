@@ -1077,7 +1077,7 @@ body::after {
 
 
 /* ================= Two pages, one URL ================= */
-html { --p: 0; scrollbar-gutter: stable; background: var(--bg); overscroll-behavior-x: none; }
+html { --p: 0; scrollbar-gutter: stable; overscroll-behavior-x: none; }
 .js body, .exp-scroll { touch-action: pan-y pinch-zoom; }
 html.exp-open { overflow: hidden; }
 
@@ -1128,8 +1128,6 @@ html.no-anim .exp-pane, html.no-anim main, html.no-anim body > .site-footer { tr
 @keyframes expdots { to { background-position: 22px 38px; } }
 
 /* Header: one nav group per page, and the switch button */
-html:not(.exp-open) .site-header ul[data-nav="exp"],
-html.exp-open .site-header ul[data-nav="work"] { display: none; }
 .site-header nav { margin-left: auto; }
 .pane-switch {
   display: inline-flex; align-items: center; gap: 0.55rem; font: inherit; font-size: 0.95rem; font-weight: 700;
@@ -1187,4 +1185,50 @@ html.exp-open .edge-tab svg { transform: rotate(180deg); }
 @media (prefers-reduced-motion: reduce) {
   .exp-pane, html.pane-live main, html.pane-live body > .site-footer, .exp-bg { transition: none; }
   .exp-bg::before, .exp-bg::after, .ps-arrow, .edge-tab { animation: none; }
+}
+
+
+/* ---------- Home backdrop: studio light beams, lens rings and a cursor spotlight ---------- */
+.home-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.home-bg > div { position: absolute; inset: -6%; transition: transform 0.7s var(--ease-out); }
+.hb-beams { transform: translate3d(calc(var(--hx, 0) * 22px), calc(var(--hy, 0) * 12px), 0); }
+.hb-beams::before {
+  content: ""; position: absolute; inset: -30%;
+  background:
+    linear-gradient(112deg, transparent 38%, rgba(244, 182, 63, 0.075) 46%, transparent 54%),
+    linear-gradient(112deg, transparent 58%, rgba(120, 150, 255, 0.065) 64%, transparent 70%);
+  animation: sway 18s ease-in-out infinite alternate;
+}
+@keyframes sway { to { transform: translate3d(-6%, 0, 0) rotate(2deg); } }
+.hb-rings {
+  transform: translate3d(calc(var(--hx, 0) * -34px), calc(var(--hy, 0) * -22px), 0);
+  background: repeating-radial-gradient(circle at 84% 20%, transparent 0 54px, rgba(255, 255, 255, 0.08) 54px 55px);
+  -webkit-mask: radial-gradient(circle at 84% 20%, #000, transparent 55%);
+  mask: radial-gradient(circle at 84% 20%, #000, transparent 55%);
+}
+.hb-glow {
+  transform: translate3d(calc(var(--hx, 0) * 38vw), calc(var(--hy, 0) * 38vh), 0);
+  background: radial-gradient(circle 320px at 50% 50%, rgba(244, 182, 63, 0.075), transparent 70%);
+  transition-duration: 1s;
+}
+
+/* ---------- Header links: one group slides out as the other slides in ---------- */
+.site-header nav { display: grid; }
+.site-header nav ul { grid-area: 1 / 1; justify-content: flex-start; transition: visibility 0s; }
+.site-header nav li { transition: transform 0.6s var(--ease-out) calc(var(--i, 0) * 55ms), opacity 0.4s ease calc(var(--i, 0) * 55ms); }
+.site-header nav li:nth-child(2) { --i: 1; }
+.site-header nav li:nth-child(3) { --i: 2; }
+.site-header nav li:nth-child(4) { --i: 3; }
+html:not(.exp-open) ul[data-nav="exp"], html.exp-open ul[data-nav="work"] { visibility: hidden; pointer-events: none; transition-delay: 0.7s; }
+html:not(.exp-open) ul[data-nav="exp"] li { opacity: 0; transform: translateX(44px); }
+html.exp-open ul[data-nav="work"] li { opacity: 0; transform: translateX(-44px); }
+@media (min-width: 720px) { .site-header nav ul { justify-content: flex-end; } }
+@media (max-width: 719px) {
+  .site-header nav ul { flex-wrap: nowrap; gap: 0 clamp(0.5rem, 3vw, 1.2rem); }
+  .site-header nav a { font-size: clamp(0.72rem, 3.4vw, 0.9rem); gap: 0.3rem; white-space: nowrap; }
+  .site-header nav .nav-icon { width: 13px; height: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hb-beams::before { animation: none; }
+  .home-bg > div, .site-header nav li { transition: none; }
 }
