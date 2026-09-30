@@ -17,7 +17,7 @@
   <a class="skip" href="#work">Skip to videos</a>
   <div class="progress" aria-hidden="true"></div>
   <div class="viewfinder" aria-hidden="true"></div>
-  <canvas class="halftone" id="halftone" aria-hidden="true"></canvas>
+  <div class="home-bg" id="home-bg" aria-hidden="true"><div class="hb-beams"></div><div class="hb-rings"></div><div class="hb-glow"></div></div>
 
 
 
@@ -64,7 +64,7 @@
           <div class="float-el">
             <div class="parallax-el">
               <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/68qRVW3hUKM?enablejsapi=1" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/68qRVW3hUKM" title="NewsVision full episode" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
           <div class="float-el" style="animation-delay: -3.2s">
             <div class="parallax-el">
               <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw?enablejsapi=1" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/rQNNf_0FlUw" title="Featured package" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -917,9 +917,7 @@
     document.querySelectorAll('.year2').forEach(function (y) { y.textContent = new Date().getFullYear(); });
 
     function pause() {
-      document.querySelectorAll('iframe[src*="youtube"]').forEach(function (f) {
-        try { f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); } catch (e) {}
-      });
+      document.querySelectorAll('iframe[src*="youtube"]').forEach(function (f) { var s = f.src; f.src = s; });
     }
     function tlUpdate() {
       var r = tl.getBoundingClientRect(), mid = innerHeight * 0.6;
@@ -1024,9 +1022,10 @@
     /* Mouse parallax for the experience background */
     var mouse = matchMedia('(hover: hover) and (pointer: fine)'), still = matchMedia('(prefers-reduced-motion: reduce)');
     addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse' || !open || !mouse.matches || still.matches) return;
-      exp.style.setProperty('--mx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
-      exp.style.setProperty('--my', (e.clientY / innerHeight * 2 - 1).toFixed(3));
+      if (e.pointerType !== 'mouse' || !mouse.matches || still.matches) return;
+      var el = open ? exp : document.getElementById('home-bg');
+      el.style.setProperty(open ? '--mx' : '--hx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
+      el.style.setProperty(open ? '--my' : '--hy', (e.clientY / innerHeight * 2 - 1).toFixed(3));
     }, { passive: true });
 
     scroller.addEventListener('scroll', tlUpdate, { passive: true });
