@@ -138,7 +138,7 @@ a:focus-visible, .button:focus-visible {
   border-top: 1px solid var(--line);
 }
 
-:is(.section > h2, .section-heading > h2) {
+.section > h2 {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -160,24 +160,6 @@ a:focus-visible, .button:focus-visible {
   max-width: 60ch;
   color: var(--muted);
   margin-bottom: 2.5rem;
-}
-
-/* A stationary, opaque shell separates sticky titles from composited media below.
-   Only the inner text receives the normal reveal; no masks or translucent overlay. */
-.section-heading { margin-bottom: 1.5rem; }
-.section-heading > h2 { margin-bottom: 0; }
-@media (min-width: 720px) and (min-height: 600px) {
-  .js .section-heading {
-    position: sticky;
-    top: var(--header-height, 4.1rem);
-    z-index: 4;
-    background: var(--bg);
-    margin: -16px calc(0px - var(--gutter)) 0.5rem;
-    padding: 16px var(--gutter);
-    overflow: clip;
-    transform: translateZ(0);
-    isolation: isolate;
-  }
 }
 
 /* ---------- Hero ---------- */
@@ -899,7 +881,7 @@ body.modal-open { overflow: hidden; }
 .js .typing-complete .typing-cursor { visibility: visible; }
 
 /* The card still reveals on entry. Keep iframe clipping and scale static so its
-   pixels do not get repeatedly re-rasterized during floating or sticky overlaps. */
+   pixels do not get repeatedly re-rasterized during floating motion. */
 .video-card:hover .video-frame { box-shadow: 0 0 0 1px rgba(244, 182, 63, 0.35); }
 .article-card { transition: border-color 0.4s; }
 .article-card:hover { border-color: var(--accent); }
@@ -1085,7 +1067,6 @@ body::after {
   .js .contact-form .form-actions { opacity: 1; transform: none; transition: none; }
   .js .float-el { transform: none; will-change: auto; }
   .parallax-el { transform: none !important; will-change: auto; }
-  .js .section-heading { position: static; transform: none; background: transparent; }
   .field input + label,
   .field textarea + label,
   .dz-icon,
