@@ -162,6 +162,26 @@ a:focus-visible, .button:focus-visible {
   margin-bottom: 2.5rem;
 }
 
+/* On roomy screens, the two longer work sections hold their headings in view. */
+@media (min-width: 720px) and (min-height: 600px) {
+  html.js :is(#work, #experience) > h2 {
+    position: sticky;
+    top: calc(var(--header-height, 4.1rem) + 18px);
+    z-index: 4;
+    isolation: isolate;
+  }
+  html.js :is(#work, #experience) > h2::before {
+    content: "";
+    position: absolute;
+    inset: -1rem calc(0px - var(--gutter)) -1.25rem;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(var(--bg) 0%, var(--bg) 72%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
+  }
+}
+
 /* ---------- Hero ---------- */
 .hero {
   padding-block: clamp(4rem, 12vw, 9rem) clamp(3.5rem, 8vw, 6rem);
@@ -270,6 +290,9 @@ a:focus-visible, .button:focus-visible {
   transform: translate3d(0, 0, 0);
   will-change: transform;
 }
+
+/* Scroll depth has its own outer layer, independent of the existing figure-eight. */
+.js .scroll-stage { will-change: transform; transform-origin: center; }
 
 /* MEDIA PARALLAX: transform is set by the isolated script in index.html. */
 .parallax-el { transform: translate3d(0, 0, 0); will-change: transform; }
@@ -1074,6 +1097,9 @@ body::after {
   .js .contact-form .form-actions { opacity: 1; transform: none; transition: none; }
   .js .float-el { transform: none; will-change: auto; }
   .parallax-el { transform: none !important; will-change: auto; }
+  .js .scroll-stage { transform: none !important; will-change: auto; }
+  html.js :is(#work, #experience) > h2 { position: static; }
+  html.js :is(#work, #experience) > h2::before { display: none; }
   .field input + label,
   .field textarea + label,
   .dz-icon,
