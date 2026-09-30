@@ -1239,25 +1239,17 @@ html.exp-open .site-header { padding-right: calc(var(--gutter) + var(--sbw, 0px)
   .exp-scroll { padding-bottom: 140px; }
 }
 
-/* Light rays fanning out from the top right corner, drifting against the cursor */
-.hb-rays {
-  transform: translate3d(calc(var(--hx, 0) * -30px), calc(var(--hy, 0) * -20px), 0);
-  -webkit-mask: radial-gradient(circle at 88% 10%, #000, transparent 64%);
-  mask: radial-gradient(circle at 88% 10%, #000, transparent 64%);
-}
-.hb-rays i {
-  position: absolute; inset: 0; transform-origin: 88% 10%;
-  background:
-    repeating-conic-gradient(from 195deg at 88% 10%, rgba(255, 255, 255, 0.085) 0 0.3deg, transparent 0.3deg 7deg),
-    repeating-conic-gradient(from 203deg at 88% 10%, rgba(255, 133, 20, 0.11) 0 0.5deg, transparent 0.5deg 19deg);
-  animation: ray-turn 90s linear infinite alternate;
-}
-@keyframes ray-turn { to { transform: rotate(14deg); } }
-@media (prefers-reduced-motion: reduce) { .hb-rays i { animation: none; } }
 
-/* Phones: grain, viewfinder corners and backdrop run the full height, under Safari's bar */
-@media (hover: none) and (pointer: coarse) {
-  .viewfinder { inset: 8px 8px auto; height: calc(100lvh - 16px); }
-  body::after { bottom: -240px; }
-  .home-bg { bottom: -240px; }
+
+/* Warm light leaks: two soft amber washes that breathe and drift with the cursor, like film edge flare */
+.hb-leaks i {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 133, 20, 0.15), transparent);
+  transform: translate3d(calc(var(--hx, 0) * var(--d) * 1px), calc(var(--hy, 0) * var(--d) * 0.6px), 0);
+  transition: transform 0.9s var(--ease-out);
+  animation: breathe 14s ease-in-out infinite alternate;
 }
+.hb-leaks i:nth-child(1) { width: 60vw; aspect-ratio: 1; top: -22%; left: -16%; --d: 34; }
+.hb-leaks i:nth-child(2) { width: 50vw; aspect-ratio: 1; bottom: -24%; right: -12%; --d: -48; animation-delay: -7s; }
+@keyframes breathe { from { opacity: 0.55; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .hb-leaks i { animation: none; } }
