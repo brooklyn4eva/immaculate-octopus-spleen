@@ -23,7 +23,7 @@
   --line: #262c38;
   --text: #eceff4;
   --muted: #98a2b3;
-  --accent: #f4b63f;
+  --accent: #ff9a1f;
   --tally: #ff4d4d;
 
   --font: "NBC Futura", "Futura", "Futura PT", "Jost", "Century Gothic", "Trebuchet MS", sans-serif;
@@ -182,14 +182,14 @@ a:focus-visible, .button:focus-visible {
   height: 0.6rem;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(244, 182, 63, 0.6);
+  box-shadow: 0 0 0 0 rgba(255, 154, 31, 0.6);
   animation: pulse 2.4s ease-out infinite;
 }
 
 @keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(244, 182, 63, 0.55); }
-  70%  { box-shadow: 0 0 0 10px rgba(244, 182, 63, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(244, 182, 63, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(255, 154, 31, 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(255, 154, 31, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 154, 31, 0); }
 }
 
 .hero h1 {
@@ -882,7 +882,7 @@ body.modal-open { overflow: hidden; }
 
 /* The card still reveals on entry. Keep iframe clipping and scale static so its
    pixels do not get repeatedly re-rasterized during floating motion. */
-.video-card:hover .video-frame { box-shadow: 0 0 0 1px rgba(244, 182, 63, 0.35); }
+.video-card:hover .video-frame { box-shadow: 0 0 0 1px rgba(255, 154, 31, 0.35); }
 .article-card { transition: border-color 0.4s; }
 .article-card:hover { border-color: var(--accent); }
 
@@ -894,7 +894,7 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(40% 40% at 20% 25%, rgba(244, 182, 63, 0.09), transparent 70%),
+    radial-gradient(40% 40% at 20% 25%, rgba(255, 154, 31, 0.09), transparent 70%),
     radial-gradient(45% 45% at 80% 70%, rgba(90, 130, 255, 0.10), transparent 70%);
   animation: drift 26s ease-in-out infinite alternate;
 }
@@ -1091,6 +1091,7 @@ html.exp-open { overflow: hidden; }
 }
 html:not(.pane-live) .exp-pane { visibility: hidden; }
 html.pane-live main, html.pane-live body > .site-footer {
+  will-change: transform, opacity;
   transform: translate3d(calc(var(--p) * -26%), 0, 0);
   opacity: calc(1 - var(--p) * 0.55);
   transition: transform 0.7s var(--ease-out), opacity 0.7s var(--ease-out);
@@ -1131,10 +1132,10 @@ html.no-anim .exp-pane, html.no-anim main, html.no-anim body > .site-footer { tr
 .site-header nav { margin-left: auto; }
 .pane-switch {
   display: inline-flex; align-items: center; gap: 0.55rem; font: inherit; font-size: 0.95rem; font-weight: 700;
-  color: var(--text); background: rgba(244, 182, 63, 0.1); border: 1px solid rgba(244, 182, 63, 0.45);
+  color: var(--text); background: rgba(255, 154, 31, 0.1); border: 1px solid rgba(255, 154, 31, 0.45);
   border-radius: 999px; padding: 0.5rem 1rem; cursor: pointer; transition: background 0.3s, border-color 0.3s;
 }
-.pane-switch:hover { background: rgba(244, 182, 63, 0.2); border-color: var(--accent); }
+.pane-switch:hover { background: rgba(255, 154, 31, 0.2); border-color: var(--accent); }
 .pane-switch:focus-visible, .edge-tab:focus-visible, .pager button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .ps-arrow { animation: nudge 2.4s var(--ease-out) infinite; }
 @keyframes nudge { 50% { transform: translateX(4px); } }
@@ -1195,22 +1196,11 @@ html.exp-open .edge-tab svg { transform: rotate(180deg); }
 .hb-beams::before {
   content: ""; position: absolute; inset: -30%;
   background:
-    linear-gradient(112deg, transparent 38%, rgba(244, 182, 63, 0.075) 46%, transparent 54%),
+    linear-gradient(112deg, transparent 38%, rgba(255, 154, 31, 0.075) 46%, transparent 54%),
     linear-gradient(112deg, transparent 58%, rgba(120, 150, 255, 0.065) 64%, transparent 70%);
   animation: sway 18s ease-in-out infinite alternate;
 }
 @keyframes sway { to { transform: translate3d(-6%, 0, 0) rotate(2deg); } }
-.hb-rings {
-  transform: translate3d(calc(var(--hx, 0) * -34px), calc(var(--hy, 0) * -22px), 0);
-  background: repeating-radial-gradient(circle at 84% 20%, transparent 0 54px, rgba(255, 255, 255, 0.08) 54px 55px);
-  -webkit-mask: radial-gradient(circle at 84% 20%, #000, transparent 55%);
-  mask: radial-gradient(circle at 84% 20%, #000, transparent 55%);
-}
-.hb-glow {
-  transform: translate3d(calc(var(--hx, 0) * 38vw), calc(var(--hy, 0) * 38vh), 0);
-  background: radial-gradient(circle 320px at 50% 50%, rgba(244, 182, 63, 0.075), transparent 70%);
-  transition-duration: 1s;
-}
 
 /* ---------- Header links: one group slides out as the other slides in ---------- */
 .site-header nav { display: grid; }
@@ -1232,3 +1222,16 @@ html.exp-open ul[data-nav="work"] li { opacity: 0; transform: translateX(-44px);
   .hb-beams::before { animation: none; }
   .home-bg > div, .site-header nav li { transition: none; }
 }
+
+/* Floating camera frames at three depths */
+.hb-frames i {
+  position: absolute; aspect-ratio: 16 / 9; border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 6px;
+  transform: translate3d(calc(var(--hx, 0) * var(--d) * 1px), calc(var(--hy, 0) * var(--d) * 0.6px), 0) rotate(var(--r));
+  transition: transform 0.7s var(--ease-out);
+}
+.hb-frames i:nth-child(1) { width: clamp(220px, 34vw, 520px); top: 14%; right: 9%; --d: -44; --r: -6deg; }
+.hb-frames i:nth-child(2) { width: clamp(150px, 22vw, 340px); bottom: 12%; left: 7%; --d: 30; --r: 5deg; border-color: rgba(255, 154, 31, 0.16); }
+.hb-frames i:nth-child(3) { width: clamp(90px, 13vw, 200px); top: 52%; left: 42%; --d: -18; --r: -2deg; }
+
+/* Experience content waits for the slide to settle before it animates in */
+.js .exp-pane .reveal.is-visible { transition-delay: calc(var(--delay, 0ms) + 350ms); }
