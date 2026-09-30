@@ -1227,18 +1227,6 @@ html.exp-open ul[data-nav="work"] li { opacity: 0; transform: translateX(-44px);
 /* Experience content waits for the slide to settle before it animates in */
 .js .exp-pane .reveal.is-visible { transition-delay: calc(var(--delay, 0ms) + 350ms); }
 
-/* Soft anamorphic light streaks at three depths: pure atmosphere, nothing that looks clickable */
-.hb-streaks { animation: streak-drift 16s ease-in-out infinite alternate; }
-@keyframes streak-drift { to { transform: translate3d(-3vw, 0, 0); } }
-.hb-streaks i {
-  position: absolute; height: 2px; border-radius: 2px; filter: blur(1.2px);
-  background: linear-gradient(90deg, transparent, rgba(255, 133, 20, 0.42) 50%, transparent);
-  transform: translate3d(calc(var(--hx, 0) * var(--d) * 1px), calc(var(--hy, 0) * var(--d) * 0.25px), 0);
-  transition: transform 0.7s var(--ease-out);
-}
-.hb-streaks i:nth-child(1) { width: 44vw; top: 22%; left: 38%; --d: -70; }
-.hb-streaks i:nth-child(2) { width: 30vw; top: 61%; left: 4%; --d: 44; background: linear-gradient(90deg, transparent, rgba(120, 150, 255, 0.4) 50%, transparent); }
-.hb-streaks i:nth-child(3) { width: 52vw; top: 82%; left: 30%; --d: -28; opacity: 0.7; }
 
 /* Main page is hidden once the pane has settled, so nothing can peek out around it */
 html.exp-settled main, html.exp-settled body > .site-footer { visibility: hidden; }
@@ -1249,4 +1237,27 @@ html.exp-open .site-header { padding-right: calc(var(--gutter) + var(--sbw, 0px)
 @media (hover: none) and (pointer: coarse) {
   .exp-pane { bottom: -140px; }
   .exp-scroll { padding-bottom: 140px; }
+}
+
+/* Light rays fanning out from the top right corner, drifting against the cursor */
+.hb-rays {
+  transform: translate3d(calc(var(--hx, 0) * -30px), calc(var(--hy, 0) * -20px), 0);
+  -webkit-mask: radial-gradient(circle at 88% 10%, #000, transparent 64%);
+  mask: radial-gradient(circle at 88% 10%, #000, transparent 64%);
+}
+.hb-rays i {
+  position: absolute; inset: 0; transform-origin: 88% 10%;
+  background:
+    repeating-conic-gradient(from 195deg at 88% 10%, rgba(255, 255, 255, 0.085) 0 0.3deg, transparent 0.3deg 7deg),
+    repeating-conic-gradient(from 203deg at 88% 10%, rgba(255, 133, 20, 0.11) 0 0.5deg, transparent 0.5deg 19deg);
+  animation: ray-turn 90s linear infinite alternate;
+}
+@keyframes ray-turn { to { transform: rotate(14deg); } }
+@media (prefers-reduced-motion: reduce) { .hb-rays i { animation: none; } }
+
+/* Phones: grain, viewfinder corners and backdrop run the full height, under Safari's bar */
+@media (hover: none) and (pointer: coarse) {
+  .viewfinder { inset: 8px 8px auto; height: calc(100lvh - 16px); }
+  body::after { bottom: -240px; }
+  .home-bg { bottom: -240px; }
 }
