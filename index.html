@@ -17,7 +17,7 @@
   <a class="skip" href="#work">Skip to videos</a>
   <div class="progress" aria-hidden="true"></div>
   <div class="viewfinder" aria-hidden="true"></div>
-  <div class="home-bg" id="home-bg" aria-hidden="true"><div class="hb-beams"></div><div class="hb-rings"></div><div class="hb-glow"></div></div>
+  <div class="home-bg" id="home-bg" aria-hidden="true"><div class="hb-beams"></div><div class="hb-frames"><i></i><i></i><i></i></div></div>
 
 
 
@@ -682,7 +682,7 @@
         keyframes.push({
           offset: i / 240,
           transform: 'translate3d(' + (Math.sin(phase) * 5.5).toFixed(6) + 'px,' +
-            (Math.sin(phase * 2) * 3).toFixed(6) + 'px,0)'
+            (Math.sin(phase * 2) * 3).toFixed(6) + 'px,0) rotate(' + (Math.sin(phase) * 0.06).toFixed(5) + 'deg)'
         });
       }
       function configure() {
@@ -913,7 +913,7 @@
     var prog = document.querySelector('.progress'), pager = document.querySelectorAll('.pager button');
     var rail = document.querySelector('.timeline-progress'), tl = document.querySelector('.timeline');
     var steps = document.querySelectorAll('.timeline li');
-    var open = false, hideTimer, lockUntil = 0, t0 = null;
+    var open = false, hideTimer, pauseTimer, lockUntil = 0, t0 = null;
     document.querySelectorAll('.year2').forEach(function (y) { y.textContent = new Date().getFullYear(); });
 
     function pause() {
@@ -931,19 +931,22 @@
     function apply(o) {
       open = o; root.classList.toggle('exp-open', o);
       [main, foot].forEach(function (el) { if (o) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
-      if (o) { exp.removeAttribute('inert'); pause(); } else {
+      if (o) { exp.removeAttribute('inert'); clearTimeout(pauseTimer); pauseTimer = setTimeout(pause, 850); } else {
         exp.setAttribute('inert', '');
         prog.style.transform = 'scaleX(' + Math.min(1, scrollY / Math.max(root.scrollHeight - innerHeight, 1)) + ')';
       }
       pager.forEach(function (b, i) { b.setAttribute('aria-current', String((i === 1) === o)); });
-      tlUpdate();
+      setTimeout(tlUpdate, 800);
     }
     function go(o, instant) {
       clearTimeout(hideTimer);
+      var warm = root.classList.contains('pane-live');
       root.classList.add('pane-live');
       if (instant) root.classList.add('no-anim');
-      root.style.setProperty('--p', o ? 1 : 0);
       apply(o);
+      var run = function () { root.style.setProperty('--p', o ? 1 : 0); };
+      if (instant || warm) run();
+      else { void main.offsetWidth; requestAnimationFrame(function () { setTimeout(run, 40); }); }
       if (instant) { void exp.offsetWidth; requestAnimationFrame(function () { root.classList.remove('no-anim'); }); }
       if (!o) hideTimer = setTimeout(function () { if (!open) root.classList.remove('pane-live'); }, 800);
     }
