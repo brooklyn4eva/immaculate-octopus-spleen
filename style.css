@@ -390,7 +390,12 @@ a:focus-visible, .button:focus-visible {
   max-width: 720px;
   margin-bottom: 1.5rem;
 }
-.resume-head h3 { font-size: var(--step-2); }
+.resume-head h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--step-2);
+}
 .resume-actions {
   display: flex;
   flex-wrap: wrap;
@@ -851,20 +856,41 @@ body.modal-open { overflow: hidden; }
   transform: none;
 }
 
-/* Gold typing cursors: purely decorative and fixed in width while blinking. */
+/* Every cursor inherits one shared blink phase, including newly opened dialogs.
+   Typing completion reveals the cursor without starting a separate blink clock. */
+html.js { animation: cursor-phase 1.1s step-end infinite; }
+@keyframes cursor-phase {
+  0%, 49% { --cursor-opacity: 1; }
+  50%, 100% { --cursor-opacity: 0; }
+}
 .heading-copy { min-width: 0; }
+.typing-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .typing-cursor {
   display: inline-block;
+  position: relative;
+  top: -0.28em;
   width: 0.6em;
   margin-left: 0.12em;
   color: var(--accent);
   vertical-align: baseline;
-  animation: cursor-blink 1.1s step-end infinite;
+  opacity: var(--cursor-opacity, 1);
 }
-@keyframes cursor-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+.js .heading-copy .type-character,
+.js .heading-copy .typing-cursor { visibility: hidden; }
+.js .typing-active .type-character {
+  animation: type-character 1ms step-end var(--type-delay, 0ms) forwards;
 }
+.js .typing-complete .type-character,
+.js .typing-complete .typing-cursor { visibility: visible; }
 
 /* Video frames wipe open */
 .js .video-frame {
@@ -927,10 +953,11 @@ body::before {
   visibility: hidden;
   animation: type-character 1ms step-end var(--type-delay, 0ms) forwards;
 }
-@keyframes type-character { to { visibility: visible; } }
+@keyframes type-character { from, to { visibility: visible; } }
+@keyframes cursor-ready { from, to { visibility: visible; } }
 .js .hero-name-cursor {
-  opacity: 0;
-  animation-delay: 1000ms;
+  visibility: hidden;
+  animation: cursor-ready 1ms step-end 1000ms forwards;
 }
 
 @keyframes rise {
@@ -1038,11 +1065,15 @@ body::after {
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
   html:not(.js) { scroll-behavior: auto; }
+  html.js { animation: none; --cursor-opacity: 1; }
   .dot, body::before { animation: none; }
   .button { transition: none; }
   .js .reveal,
   .js .hero > *,
   .js .name-character,
+  .js .heading-copy .type-character,
+  .js .typing-active .type-character,
+  .js .heading-copy .typing-cursor,
   .typing-cursor,
   .js .hero-name-cursor {
     opacity: 1;
