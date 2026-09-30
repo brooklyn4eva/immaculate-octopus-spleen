@@ -1251,11 +1251,11 @@ html.exp-open .site-header { padding-right: calc(var(--gutter) + var(--sbw, 0px)
   position: absolute; top: 0; bottom: 0; width: min(44vw, 380px); overflow: hidden; display: block;
   font: 0.8rem/2.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.14em; white-space: pre;
   -webkit-mask: linear-gradient(transparent, #000 14%, #000 86%, transparent); mask: linear-gradient(transparent, #000 14%, #000 86%, transparent);
-  transform: translate3d(calc(var(--hx, 0) * var(--d) * 1px), calc(var(--hy, 0) * var(--d) * 0.5px), 0);
+  transform: translate3d(calc(var(--hx, 0) * var(--dx) * 1px), calc(var(--hy, 0) * var(--dy) * 0.5px), 0);
   transition: transform 0.9s var(--ease-out);
 }
-.hb-wire i:nth-child(1) { left: 3vw; --d: 26; }
-.hb-wire i:nth-child(2) { right: 3vw; --d: -40; text-align: right; }
+.hb-wire i:nth-child(1) { left: 3vw; --dx: -26; --dy: 26; }
+.hb-wire i:nth-child(2) { right: 3vw; --dx: -40; --dy: -40; text-align: right; }
 .hb-wire b { display: block; font-weight: 400; color: rgba(255, 255, 255, 0.11); animation: wire-roll 170s linear infinite; }
 .hb-wire i:nth-child(2) b { animation-direction: reverse; animation-duration: 210s; }
 .hb-wire span { display: block; }
@@ -1270,3 +1270,6 @@ html.exp-open.exp-docked { overflow: visible; }
 html.exp-docked .exp-pane { position: relative; inset: auto; z-index: auto; transform: none; will-change: auto; box-shadow: none; background: transparent; visibility: visible; }
 html.exp-docked .exp-scroll { position: static; overflow: visible; padding: 0; }
 html.exp-docked .exp-bg { position: fixed; z-index: -1; background: var(--bg); }
+
+.viewfinder { transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (prefers-reduced-motion: reduce) { .viewfinder { transition: none; } }
