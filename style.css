@@ -42,7 +42,8 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  scroll-padding-top: 5rem;
+  scroll-padding-top: calc(var(--header-height, 4.1rem) + 1rem);
+  overscroll-behavior-y: none;
 }
 html:not(.js) { scroll-behavior: smooth; }
 
@@ -54,6 +55,7 @@ body {
   font-size: var(--step-0);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
 }
 
 img, iframe { max-width: 100%; display: block; }
@@ -80,6 +82,9 @@ a:focus-visible, .button:focus-visible {
 .skip:focus { left: 0.5rem; }
 
 /* ---------- Header ---------- */
+/* JS measures the fixed banner before main content is parsed; no guessed mobile gap. */
+.js body { padding-top: var(--header-height, 4.1rem); }
+.js .site-header { position: fixed; inset: 0 0 auto; transform: translateZ(0); }
 .site-header {
   position: sticky;
   top: 0;
@@ -90,8 +95,7 @@ a:focus-visible, .button:focus-visible {
   justify-content: space-between;
   gap: 0.5rem 2rem;
   padding: 1rem var(--gutter);
-  background: rgba(15, 18, 24, 0.88);
-  backdrop-filter: blur(10px);
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -260,49 +264,11 @@ a:focus-visible, .button:focus-visible {
   grid-template-columns: 1fr;
 }
 
-/* Smooth sine-like motion on two independently composited transform properties.
-   One horizontal cycle takes 12s; two vertical cycles complete the figure-eight.
-   Quarter-cycle easing keeps the velocity continuous through every turn.
-   Inline negative animation delays apply to both axes and preserve phase offsets. */
-@keyframes float-x {
-  0%, 100% {
-    transform: translate3d(0, 0, 0);
-    animation-timing-function: cubic-bezier(0.3642, 0.5728, 0.6358, 1);
-  }
-  25% {
-    transform: translate3d(5.5px, 0, 0);
-    animation-timing-function: cubic-bezier(0.3642, 0, 0.6358, 0.4272);
-  }
-  50% {
-    transform: translate3d(0, 0, 0);
-    animation-timing-function: cubic-bezier(0.3642, 0.5728, 0.6358, 1);
-  }
-  75% {
-    transform: translate3d(-5.5px, 0, 0);
-    animation-timing-function: cubic-bezier(0.3642, 0, 0.6358, 0.4272);
-  }
-}
-@keyframes float-y {
-  0%, 100% {
-    translate: 0 0;
-    animation-timing-function: cubic-bezier(0.3642, 0.5728, 0.6358, 1);
-  }
-  25% {
-    translate: 0 3px;
-    animation-timing-function: cubic-bezier(0.3642, 0, 0.6358, 0.4272);
-  }
-  50% {
-    translate: 0 0;
-    animation-timing-function: cubic-bezier(0.3642, 0.5728, 0.6358, 1);
-  }
-  75% {
-    translate: 0 -3px;
-    animation-timing-function: cubic-bezier(0.3642, 0, 0.6358, 0.4272);
-  }
-}
+/* One composited figure-eight transform, initialized once in index.html.
+   Mouse parallax stays on the child so the two motions never overwrite each other. */
 .js .float-el {
-  animation: float-x 12s linear infinite, float-y 6s linear infinite;
-  will-change: transform, translate;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 /* MEDIA PARALLAX: transform is set by the isolated script in index.html. */
@@ -346,10 +312,20 @@ a:focus-visible, .button:focus-visible {
 .timeline li {
   position: relative;
   display: grid;
-  gap: 0.25rem;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: 0.4rem 0.85rem;
   padding: 0 0 2.5rem 1.75rem;
 }
 .timeline li:last-child { padding-bottom: 0; }
+.timeline .when { grid-column: 1 / -1; }
+.timeline li > div { min-width: 0; }
+.company-logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+  align-self: start;
+}
+.company-logo--nbc { height: 1.75rem; }
 
 .timeline li::before {
   content: "";
@@ -793,7 +769,8 @@ body.modal-open { overflow: hidden; }
   .about-grid { grid-template-columns: 1.6fr 1fr; gap: 4rem; }
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .article-grid { grid-template-columns: repeat(2, 1fr); }
-  .timeline li { grid-template-columns: 9rem 1fr; gap: 2rem; padding-left: 2.5rem; }
+  .timeline li { grid-template-columns: 8rem 2.75rem minmax(0, 1fr); gap: 1.1rem; padding-left: 2.5rem; }
+  .timeline .when { grid-column: auto; }
   .edu { grid-template-columns: 9rem 1fr; gap: 2rem; padding-left: 2.5rem; }
   .when { padding-top: 0.2rem; }
 }
@@ -862,13 +839,8 @@ body.modal-open { overflow: hidden; }
   transform: none;
 }
 
-/* Every cursor inherits one shared blink phase, including newly opened dialogs.
-   Typing completion reveals the cursor without starting a separate blink clock. */
-html.js { animation: cursor-phase 1.1s step-end infinite; }
-@keyframes cursor-phase {
-  0%, 49% { --cursor-opacity: 1; }
-  50%, 100% { --cursor-opacity: 0; }
-}
+/* Cursor opacity is composited by the shared clock in index.html.
+   Typing completion only reveals it; the blink never restarts. */
 .heading-copy { min-width: 0; }
 .typing-label {
   position: absolute;
@@ -892,7 +864,7 @@ html.js { animation: cursor-phase 1.1s step-end infinite; }
   vertical-align: baseline;
   color: transparent;
   background: var(--accent);
-  opacity: var(--cursor-opacity, 1);
+  opacity: 1;
 }
 .js .heading-copy .type-character,
 .js .heading-copy .typing-cursor { visibility: hidden; }
@@ -1029,6 +1001,8 @@ body::before {
   height: 100%;
   z-index: -1;
   pointer-events: none;
+  /* Keep canvas redraws on their own layer, separate from moving media and text. */
+  will-change: transform;
 }
 
 /* Film grain and faint scanlines over everything */
@@ -1075,7 +1049,6 @@ body::after {
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
   html:not(.js) { scroll-behavior: auto; }
-  html.js { animation: none; --cursor-opacity: 1; }
   .dot, body::before { animation: none; }
   .button { transition: none; }
   .js .reveal,
@@ -1099,7 +1072,7 @@ body::after {
   .resume-dialog[open] { animation: none; }
   .js .contact-form .field,
   .js .contact-form .form-actions { opacity: 1; transform: none; transition: none; }
-  .js .float-el { animation: none; will-change: auto; }
+  .js .float-el { transform: none; will-change: auto; }
   .parallax-el { transform: none !important; will-change: auto; }
   .field input + label,
   .field textarea + label,
