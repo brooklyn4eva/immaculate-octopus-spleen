@@ -1085,7 +1085,7 @@ html.exp-open { overflow: hidden; }
 .exp-pane {
   position: fixed; inset: 0; z-index: 5; background: var(--bg);
   transform: translate3d(calc((1 - var(--p)) * 100%), 0, 0);
-  transition: transform 0.62s cubic-bezier(0.3, 0.7, 0.2, 1), box-shadow 0.62s ease;
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s ease;
   box-shadow: -30px 0 60px rgba(0, 0, 0, calc(var(--p) * 0.45));
   will-change: transform;
 }
@@ -1094,7 +1094,7 @@ html.pane-live main, html.pane-live body > .site-footer {
   will-change: transform, opacity;
   transform: translate3d(calc(var(--p) * -26%), 0, 0);
   opacity: calc(1 - var(--p) * 0.55);
-  transition: transform 0.62s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.62s ease;
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.5s ease;
 }
 html.dragging .exp-pane, html.dragging main, html.dragging body > .site-footer,
 html.no-anim .exp-pane, html.no-anim main, html.no-anim body > .site-footer { transition: none; }
@@ -1242,16 +1242,31 @@ html.exp-open .site-header { padding-right: calc(var(--gutter) + var(--sbw, 0px)
 
 
 
-/* Contour ripples: hand-drawn looking rings that wobble outward, each set on its own parallax depth */
-.hb-topo i { position: absolute; display: block; transition: transform 0.9s var(--ease-out);
-  transform: translate3d(calc(var(--hx, 0) * var(--d) * 1px), calc(var(--hy, 0) * var(--d) * 0.6px), 0); }
-.hb-topo i:nth-child(1) { width: min(95vw, 960px); aspect-ratio: 1; top: -24%; right: -26%; --d: -36; }
-.hb-topo i:nth-child(2) { width: min(70vw, 680px); aspect-ratio: 1; bottom: -26%; left: -22%; --d: 52; }
-.hb-topo svg { width: 100%; height: 100%; display: block; animation: topo-drift 50s ease-in-out infinite alternate; }
-.hb-topo path { vector-effect: non-scaling-stroke; }
-.hb-topo i:nth-child(2) svg { animation-direction: alternate-reverse; }
-@keyframes topo-drift { to { transform: scale(1.06) rotate(4deg); } }
-@media (prefers-reduced-motion: reduce) { .hb-topo svg { animation: none; } }
 
 /* Corner brackets follow the visible area above Safari's toolbar so they never hide behind it */
 .viewfinder { inset: 8px 8px auto; height: calc(100vh - 16px); height: calc(100svh - 16px); }
+
+/* Newsroom rundown (left) and wire datelines (right), rolling like a teleprompter at two depths */
+.hb-wire i {
+  position: absolute; top: 0; bottom: 0; width: min(44vw, 380px); overflow: hidden; display: block;
+  font: 0.8rem/2.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.14em; white-space: pre;
+  -webkit-mask: linear-gradient(transparent, #000 14%, #000 86%, transparent); mask: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+  transform: translate3d(calc(var(--hx, 0) * var(--d) * 1px), calc(var(--hy, 0) * var(--d) * 0.5px), 0);
+  transition: transform 0.9s var(--ease-out);
+}
+.hb-wire i:nth-child(1) { left: 3vw; --d: 26; }
+.hb-wire i:nth-child(2) { right: 3vw; --d: -40; text-align: right; }
+.hb-wire b { display: block; font-weight: 400; color: rgba(255, 255, 255, 0.11); animation: wire-roll 170s linear infinite; }
+.hb-wire i:nth-child(2) b { animation-direction: reverse; animation-duration: 210s; }
+.hb-wire span { display: block; }
+.hb-wire .a { color: rgba(255, 133, 20, 0.24); }
+@keyframes wire-roll { to { transform: translate3d(0, -50%, 0); } }
+@media (max-width: 719px) { .hb-wire i { font-size: 0.68rem; } .hb-wire b { color: rgba(255, 255, 255, 0.1); } }
+@media (prefers-reduced-motion: reduce) { .hb-wire b { animation: none; } }
+
+/* Phones: once the experience pane settles it joins the page scroll, so Safari's toolbar grows and shrinks normally */
+html.exp-docked main, html.exp-docked body > .site-footer { display: none; }
+html.exp-open.exp-docked { overflow: visible; }
+html.exp-docked .exp-pane { position: relative; inset: auto; z-index: auto; transform: none; will-change: auto; box-shadow: none; background: transparent; visibility: visible; }
+html.exp-docked .exp-scroll { position: static; overflow: visible; padding: 0; }
+html.exp-docked .exp-bg { position: fixed; z-index: -1; background: var(--bg); }
