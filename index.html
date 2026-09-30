@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css?v=20260930-3">
+  <link rel="stylesheet" href="style.css?v=20260930-4">
 </head>
 <body>
 
@@ -34,6 +34,20 @@
       </ul>
     </nav>
   </header>
+
+  <script>
+    /* FIXED NAVIGATION: reserve its actual height, including wrapped mobile links. */
+    (function () {
+      var header = document.querySelector('.site-header');
+      function measure() {
+        document.documentElement.style.setProperty('--header-height', header.getBoundingClientRect().height + 'px');
+      }
+      measure();
+      if ('ResizeObserver' in window) new ResizeObserver(measure).observe(header);
+      window.addEventListener('resize', measure);
+      if (document.fonts) document.fonts.ready.then(measure);
+    })();
+  </script>
 
   <main id="top">
 
@@ -98,6 +112,7 @@
       <ol class="timeline">
         <li>
           <p class="when">September 2026 to Present</p>
+          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
           <div>
             <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
             <p class="role">News Associate, Net Desk</p>
@@ -107,6 +122,7 @@
         </li>
         <li>
           <p class="when">September 2025 to April 2026</p>
+          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
           <div>
             <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
             <p class="role">Southern News Bureau Intern</p>
@@ -116,6 +132,7 @@
         </li>
         <li>
           <p class="when">June 2025 to September 2025</p>
+          <img class="company-logo company-logo--nbc" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyNC45NjY0OG1tIiB2aWV3Qm94PSIwIDAgMjE1Ljg0MDU1IDEyNC45NjY0NyIgd2lkdGg9IjIxNS44NDA1NW1tIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEuMDE5Nzg5MyAwIDAgMS4wMTk3ODkzIC4xMTgwOTggLTEyLjQzOTI5OCkiPjxwYXRoIGQ9Im0xMzEuMjk4NDUgMTIuMTk3OTFjLTguODg1MTMgMC0xNy4yNTg3NCA1LjAxNTI0NS0yMC4yOTI4MiAxMy4wMjI0NjEtMS4yMDY4NyAzLjE4NTAzMS0xLjcwODA2IDYuMzY5MjYtMS40NTcyOCA5Ljc2NDc3OWg5LjIxNjVjMy44MTUzNyAwIDYuMTMyNDQgMS45NzMyMyA2LjEzMjQ0IDMuMzA2MjU4LTkuNjU2NDMgMy43NzQxMS0xMy41MTk5OCA4Ljg4NjQzLTEyLjk1NDY5IDEyLjkwNzIyMmw4LjU0ODI0IDYwLjgwMTk3IDMwLjE3NTkzLTY5LjQ5MzQyOWMyLjAyODU3LTQuNjU4ODgyIDIuNDQ3ODktOC41NzI2NzguOTkxNjctMTQuMjYzNzI5LTEuMzcxODUtNS4zNjEyOTktNC42NDM3NC0xMC42MTM4NzEtMTEuODgxNDQtMTQuMTAyNDk4LTIuNTMyMjItMS4xNTAwNzUtNS43MjYzMi0xLjk0MzAzNC04LjQ3ODU1LTEuOTQzMDM0eiIgZmlsbD0iIzZlNTVkYyIvPjxwYXRoIGQ9Im04MC4wODg5MjMgMTIuMTk3OTFjLTIuNzUyMjM3IDAtNS45NDYzODkuNjI5Mzk2LTguNDc4NjA0IDEuNzc5NDcyLTcuMjM3NzA5IDMuNDg4NjMxLTEwLjY3MzE2NyA4LjkwNDkzOS0xMi4wNDUwMTQgMTQuMjY2MjQ0LTEuNDU2MjIzIDUuNjkxMDU2LS41MTYzODEgMTAuNTk3NDQ5IDEuMTU1MTYzIDE0LjQyNzMzNmwzMC4yNTg3OTQgNjkuMzI5NzY4IDEwLjg0OTM1OC03NS41NTQ1MDZjLjU0MDgxLTMuNzY2MTcxLjEwNTA3LTcuNjg5Mjc0LTEuMjk3OTUtMTEuMjI1OTQ0LTMuMTU3NTQtNy45NTkzNTMtMTAuOTk0Mzc3LTEzLjAyMjM3LTIwLjQ0MTc0Ny0xMy4wMjIzN3oiIGZpbGw9IiNlZjE1NDEiLz48cGF0aCBkPSJtMjcuMTI4MDg5IDQ2LjEzMTc3OWMtMi4zNTY0ODMgMS40MjE5LTQuNzMwNDM4IDMuNjgyNjcxLTYuMjE3NTkgNi4wMzI4MTItNC4xMzg1NDIgNi41NDAxMjItNC40NTY2MzIgMTQuMDYyNTg5LTIuODk0MjggMTguODkxMDk5IDEuNjYyMDA5IDUuMTM2NTA3IDQuOTMxNzk4IDguNzI4NzA1IDkuMDEyOTQzIDExLjQ2NDQ2OGw2MS4yNTMzMTQgNDEuMDUwMzAyLTI5Ljc1ODg2My02Ny43NDk3NzNjLTEuNTMwMTQyLTMuNDgzNTU4LTQuMjEzMTctNi42MTQwMzktNy4zMTgwNzgtOC44MTMxMzgtNi44Njg5ODUtNC44NjUwNjQtMTYuNzAzMjA2LTUuMzI1MzgxLTI0LjA3NzQ0Ni0uODc1Nzd6IiBmaWxsPSIjZmY3MTEyIi8+PHBhdGggZD0ibTEuNjk2NTcyMSAxMDQuNDUwMTJjLTEuMjIwMDM3MDYgMi40NjcwNi0xLjg3OTczODA4IDUuNjkyNTktMS44MDY5MjkyOCA4LjQ3Mjc4LjIwMjYxNDQgNy43MzY5MSAyLjg1OTczMTg4IDEzLjAyNDY3IDguMTExNjIzODggMTcuMTY0MTIgMy4yMTI4MzEzIDIuNTMyMyA4Ljk1NTk5MTMgNC42NDcwMiAxMy44NjkyNTMzIDQuNjQ3MzZsNzEuMzg4NTQ2LjAwNS01OS40MTA2NjYtMzkuNzg2OTI5Yy0yLjAzNDAwNy0xLjM2MjE2MS02LjQxNjA2OS0zLjc0MzM4Ni0xMi4xODYyOTItMy43ODU3MjctNC44NTIwODktLjAzNTYtOS4xODU3NDYgMS41OTE0NDMtMTIuNjM1MjQ1MyA0LjI1NjE5My00LjQ2NzU5NzMgMy40NTEyMzUtNi4wMTQ4Mzg1IDYuMzY3MjAzLTcuMzMwMjkwNiA5LjAyNzIwM3oiIGZpbGw9IiNmY2NjMTIiLz48cGF0aCBkPSJtMTg0LjIzMzA0IDQ2LjEzMTc3OWMyLjM1NjQ4IDEuNDIxOSA0LjczMDQ0IDMuNjgyNjcxIDYuMjE3NTkgNi4wMzI4MTIgNC4xMzg1NCA2LjU0MDEyMiA0LjQ1NjYzIDE0LjA2MjU4OSAyLjg5NDI4IDE4Ljg5MTA5OS0xLjY2MjAxIDUuMTM2NTA3LTQuOTMxOCA4LjcyODcwNS05LjAxMjk0IDExLjQ2NDQ2OGwtNjEuMjUzMzIgNDEuMDUwMzAyIDI5Ljc1ODg3LTY3Ljc0OTc3M2MxLjUzMDE0LTMuNDgzNTU4IDQuMjEzMTctNi42MTQwMzkgNy4zMTgwOC04LjgxMzEzOCA2Ljg2ODk4LTQuODY1MDY0IDE2LjcwMzItNS4zMjUzODEgMjQuMDc3NDQtLjg3NTc3eiIgZmlsbD0iIzA2OWRlMCIvPjxwYXRoIGQ9Im0yMDkuNzIzOTEgMTA0LjQ1MDEyYzEuMjIwMDQgMi40NjcwNiAxLjg3OTc0IDUuNjkyNTkgMS44MDY5MyA4LjQ3Mjc4LS4yMDI2MiA3LjczNjkxLTIuODU5NzMgMTMuMDI0NjctOC4xMTE2MyAxNy4xNjQxMi0zLjIxMjgzIDIuNTMyMy04Ljk1NTk5IDQuNjQ3MDItMTMuODY5MjUgNC42NDczNmwtNzEuNTUzOTEuMDA1IDU5LjQ5MzM1LTM5Ljc4NjkyOWMyLjAzNDg5LTEuMzYwODU1IDYuNDY1NDEtMy43ODU3MjcgMTIuNTMzNTUtMy43ODU3MjcgNC44NTIyMyAwIDkuMTAzMDcgMS41OTE0NDMgMTIuNTUyNTcgNC4yNTYxOTMgNC40Njc2IDMuNDUxMjM1IDUuODMyOTQgNi4zNjcyMDMgNy4xNDgzOSA5LjAyNzIwM3oiIGZpbGw9IiMwNWFjM2YiLz48L2c+PC9zdmc+" alt="" aria-hidden="true" width="44" height="44">
           <div>
             <h3><span class="heading-copy" data-type-duration="606"><span class="typing-label">NBC News</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">N</span><span class="type-character" style="--type-delay:215ms">B</span><span class="type-character" style="--type-delay:280ms">C</span><span class="type-character" style="--type-delay:345ms"> </span><span class="type-character" style="--type-delay:410ms">N</span><span class="type-character" style="--type-delay:475ms">e</span><span class="type-character" style="--type-delay:540ms">w</span><span class="type-character" style="--type-delay:605ms">s</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
             <p class="role">TODAY Show Intern</p>
@@ -125,6 +142,7 @@
         </li>
         <li>
           <p class="when">April 2025 to April 2026</p>
+          <img class="company-logo company-logo--umtv" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjEzMSA3IDMyMiAzMjIiIHdpZHRoPSIzMjIiIGhlaWdodD0iMzIyIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+Cjx0aXRsZSBpZD0idGl0bGUiPlVNVFYgbG9nbzwvdGl0bGU+CjxkZXNjIGlkPSJkZXNjIj5VTVRWIGNpcmN1bGFyIGdyYXkgbG9nbyB3aXRoIG9yYW5nZSBhbmQgZ3JlZW4gVSBtYXJrIGFuZCB3aGl0ZSBVTVRWIGxldHRlcmluZy48L2Rlc2M+Cgo8IS0tIFRyYW5zcGFyZW50IGNhbnZhczsgb3JpZ2luYWwgd2hpdGUgbGV0dGVyaW5nIGFuZCBVIGtleWxpbmUgcmV0YWluZWQuIC0tPgoKCjwhLS0gY2lyY3VsYXIgYmFkZ2UgLS0+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTYxIiBmaWxsPSIjNjI2MzY2Ii8+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTU0IiBmaWxsPSIjZmZmIi8+CjxjaXJjbGUgY3g9IjI5MiIgY3k9IjE2OCIgcj0iMTQzIiBmaWxsPSIjN2I3YzgwIi8+Cgo8IS0tIFUgd2hpdGUga2V5bGluZSAtLT4KPHBhdGggZmlsbD0iI2ZmZiIgZD0iCk0xOTUgODAgSDI0OSBWMTU4CkMyNDkgMTc0IDI2NCAxODEgMjkyIDE4MQpDMzIwIDE4MSAzMzQgMTc0IDMzNCAxNTgKVjgwIEgzODkgVjE2NgpDMzg5IDE4NyAzNTUgMTk4IDI5MiAxOTgKQzIyOSAxOTggMTk1IDE4NyAxOTUgMTY2IFoiLz4KCjwhLS0gb3JhbmdlIGhhbGYgLS0+CjxwYXRoIGZpbGw9IiNmNDczMjEiIGQ9IgpNMjAwIDg1IEgyNDQgVjE1OApDMjQ0IDE3NyAyNjAgMTg1IDI4OCAxODYKVjE5MwpDMjMzIDE5MiAyMDAgMTgzIDIwMCAxNjYgWiIvPgoKPCEtLSBncmVlbiBoYWxmIC0tPgo8cGF0aCBmaWxsPSIjMDA1MDMwIiBkPSIKTTMzOSA4NSBIMzg0IFYxNjYKQzM4NCAxODMgMzUxIDE5MiAyOTYgMTkzClYxODYKQzMyNCAxODUgMzM5IDE3NyAzMzkgMTU4IFoiLz4KCjwhLS0gVU1UViB3b3JkbWFyazsgcGF0aHMgcmF0aGVyIHRoYW4gZm9udCBkZXBlbmRlbmNpZXMgLS0+CjxnIGZpbGw9IiNmZmYiPgogIDwhLS0gVSAtLT4KICA8cGF0aCBkPSJNMjEzIDIxNCBIMjIwIFYyNjMKICAgICAgICAgICBDMjIwIDI3NCAyMjQgMjgwIDIzMiAyODAKICAgICAgICAgICBDMjQwIDI4MCAyNDQgMjc0IDI0NCAyNjMKICAgICAgICAgICBWMjE0IEgyNTEgVjI2NAogICAgICAgICAgIEMyNTEgMjc5IDI0NCAyODcgMjMyIDI4NwogICAgICAgICAgIEMyMjAgMjg3IDIxMyAyNzkgMjEzIDI2NCBaIi8+CiAgPCEtLSBNIC0tPgogIDxwYXRoIGQ9Ik0yNTggMjE0IEgyNjcgTDI3OSAyNjcgTDI5MSAyMTQgSDMwMCBWMjg2IEgyOTMgVjIyOQogICAgICAgICAgIEwyODIgMjg2IEgyNzYgTDI2NSAyMjkgVjI4NiBIMjU4IFoiLz4KICA8IS0tIFQgLS0+CiAgPHBhdGggZD0iTTMwNCAyMTQgSDM0MCBWMjIxIEgzMjYgVjI4NiBIMzE4IFYyMjEgSDMwNCBaIi8+CiAgPCEtLSBWIC0tPgogIDxwYXRoIGQ9Ik0zNDIgMjE0IEgzNTAgTDM2MiAyNzQgTDM3NCAyMTQgSDM4MiBMMzY3IDI4NiBIMzU3IFoiLz4KPC9nPgo8L3N2Zz4=" alt="" aria-hidden="true" width="44" height="44">
           <div>
             <h3><span class="heading-copy" data-type-duration="1061"><span class="typing-label">UMTV NewsVision</span><span class="typed-text" aria-hidden="true"><span class="type-character" style="--type-delay:150ms">U</span><span class="type-character" style="--type-delay:215ms">M</span><span class="type-character" style="--type-delay:280ms">T</span><span class="type-character" style="--type-delay:345ms">V</span><span class="type-character" style="--type-delay:410ms"> </span><span class="type-character" style="--type-delay:475ms">N</span><span class="type-character" style="--type-delay:540ms">e</span><span class="type-character" style="--type-delay:605ms">w</span><span class="type-character" style="--type-delay:670ms">s</span><span class="type-character" style="--type-delay:735ms">V</span><span class="type-character" style="--type-delay:800ms">i</span><span class="type-character" style="--type-delay:865ms">s</span><span class="type-character" style="--type-delay:930ms">i</span><span class="type-character" style="--type-delay:995ms">o</span><span class="type-character" style="--type-delay:1060ms">n</span></span><span class="typing-cursor" aria-hidden="true">_</span></span></h3>
             <p class="role">Executive Producer</p>
@@ -496,7 +514,7 @@
   </script>
   <script>
     /* HEADING TYPING: every underscore label types when it enters view.
-       Cursor opacity comes from one CSS clock on <html>, never this timer. */
+       Cursor opacity comes from the shared document clock, never this timer. */
     (function () {
       var labels = document.querySelectorAll('.heading-copy[data-type-duration]');
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -531,6 +549,70 @@
           });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
         labels.forEach(function (label) { observer.observe(label); });
+      }
+      reducedMotion.addEventListener('change', configure);
+      configure();
+    })();
+  </script>
+
+
+  <script>
+    /* SHARED CURSOR CLOCK: animate only cursor opacity, never an inherited page property.
+       An identical document-timeline start keeps every blink in phase, even in the dialog. */
+    (function () {
+      var cursors = document.querySelectorAll('.typing-cursor');
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var animations = [];
+      function configure() {
+        animations.forEach(function (animation) { animation.cancel(); });
+        animations = [];
+        if (reducedMotion.matches) return;
+        cursors.forEach(function (cursor) {
+          if (!cursor.animate) return;
+          var animation = cursor.animate([
+            { opacity: 1, offset: 0, easing: 'steps(1, end)' },
+            { opacity: 0, offset: 0.5, easing: 'steps(1, end)' },
+            { opacity: 1, offset: 1 }
+          ], { duration: 1100, iterations: Infinity });
+          animation.startTime = 0;
+          animations.push(animation);
+        });
+      }
+      reducedMotion.addEventListener('change', configure);
+      configure();
+    })();
+  </script>
+  <script>
+    /* FIGURE-EIGHT FLOAT: generate a sine path once; the browser animates one transform.
+       No per-frame JS or layout reads. Keep the 12-second cycle, 5.5px/3px travel,
+       two vertical cycles, and the existing per-element negative phase delays.
+       Samples every 50ms interpolate to within 0.005px of the continuous curve. */
+    (function () {
+      var elements = document.querySelectorAll('.float-el');
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var animations = [];
+      var keyframes = [];
+      for (var i = 0; i <= 240; i++) {
+        var phase = i / 240 * Math.PI * 2;
+        keyframes.push({
+          offset: i / 240,
+          transform: 'translate3d(' + (Math.sin(phase) * 5.5).toFixed(6) + 'px,' +
+            (Math.sin(phase * 2) * 3).toFixed(6) + 'px,0)'
+        });
+      }
+      function configure() {
+        animations.forEach(function (animation) { animation.cancel(); });
+        animations = [];
+        if (reducedMotion.matches) return;
+        elements.forEach(function (element) {
+          if (!element.animate) return;
+          var delay = parseFloat(getComputedStyle(element).animationDelay) * 1000 || 0;
+          var animation = element.animate(keyframes, {
+            duration: 12000, iterations: Infinity, easing: 'linear', delay: delay
+          });
+          animation.startTime = 0;
+          animations.push(animation);
+        });
       }
       reducedMotion.addEventListener('change', configure);
       configure();
@@ -641,7 +723,12 @@
           for (var i = 0; i < cols; i++) {
             var colIndex = colStart + i;
             var x = colIndex * S + t * speedX + shift;
-            var f = Math.max(1 - Math.hypot(w - x, y) / R, 1 - Math.hypot(x, h - y) / R);
+            /* Skip empty center pixels before doing the gradient/pulse calculations.
+               The nearest-corner distance gives exactly the same corner falloff. */
+            var right = w - x, bottom = h - y;
+            var distanceSquared = Math.min(right * right + y * y, x * x + bottom * bottom);
+            if (distanceSquared >= R * R) continue;
+            var f = 1 - Math.sqrt(distanceSquared) / R;
             f = f > 0 ? Math.pow(f, 1.3) : 0;
             if (f <= 0.012) continue;
             var r = f * 5.25 + Math.sin(t * 0.0012 + x * 0.012 + y * 0.017) * 0.65 * f;
