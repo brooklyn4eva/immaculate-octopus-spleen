@@ -851,21 +851,20 @@ body.modal-open { overflow: hidden; }
   transform: none;
 }
 
-/* Section titles draw an underline */
-.section > h2::after {
-  content: "";
-  display: block;
-  width: 3rem;
-  height: 3px;
-  background: var(--accent);
-  margin-top: 1rem;
+/* Gold typing cursors: purely decorative and fixed in width while blinking. */
+.heading-copy { min-width: 0; }
+.typing-cursor {
+  display: inline-block;
+  width: 0.6em;
+  margin-left: 0.12em;
+  color: var(--accent);
+  vertical-align: baseline;
+  animation: cursor-blink 1.1s step-end infinite;
 }
-.js .section > h2::after {
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.9s var(--ease-out) 0.25s;
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
-.js .section > h2.is-visible::after { transform: scaleX(1); }
 
 /* Video frames wipe open */
 .js .video-frame {
@@ -921,14 +920,18 @@ body::before {
 .js .hero > :nth-child(4) { animation-delay: 0.6s; }
 
 .js .hero > h1 { opacity: 1; transform: none; animation: none; }
-.js .hero h1 .line > span {
-  display: inline-block;
-  transform: translateY(110%);
-  animation: line-up 1.1s var(--ease-out) forwards;
+/* Quick name typing without moving the heading or changing its layout.
+   The full name stays available to screen readers and without JavaScript. */
+.name-text { display: inline-block; }
+.js .name-character {
+  visibility: hidden;
+  animation: type-character 1ms step-end var(--type-delay, 0ms) forwards;
 }
-.js .hero h1 .line:nth-child(1) > span { animation-delay: 0.2s; }
-.js .hero h1 .line:nth-child(2) > span { animation-delay: 0.35s; }
-@keyframes line-up { to { transform: none; } }
+@keyframes type-character { to { visibility: visible; } }
+.js .hero-name-cursor {
+  opacity: 0;
+  animation-delay: 1000ms;
+}
 
 @keyframes rise {
   to { opacity: 1; transform: none; }
@@ -967,13 +970,7 @@ body::before {
   stroke-width: 1;
 }
 .broadcast-detail .studio-accent { stroke: var(--accent); }
-.studio-calibration {
-  width: clamp(230px, 27vw, 390px);
-  height: auto;
-  top: 15%;
-  right: -5%;
-  opacity: 0.12;
-}
+
 .studio-film {
   width: 42px;
   height: auto;
@@ -981,17 +978,10 @@ body::before {
   left: -18px;
   opacity: 0.12;
 }
-.studio-waveform {
-  width: clamp(180px, 23vw, 320px);
-  height: auto;
-  right: -24px;
-  bottom: 9%;
-  opacity: 0.10;
-}
+
 /* Keep narrow screens spare and the motifs clear of the reading column. */
 @media (max-width: 719px) {
-  .studio-calibration { width: 210px; top: 20%; right: -115px; opacity: 0.08; }
-  .studio-film, .studio-waveform { display: none; }
+  .studio-film { display: none; }
 }
 
 /* Halftone dots are drawn on a canvas so they can react to the cursor */
@@ -1045,28 +1035,6 @@ body::after {
     linear-gradient(var(--c), var(--c)) right bottom / var(--t) var(--l) no-repeat;
 }
 
-/* Grayscale test bars under the hero */
-.bars {
-  width: min(100% - 2 * var(--gutter), var(--max));
-  height: 12px;
-  margin: 0 auto;
-}
-.bars::before {
-  content: "";
-  display: block;
-  height: 100%;
-  opacity: 0.85;
-  background: linear-gradient(90deg,
-    #ececec 0 14.28%, #cfcfcf 0 28.57%, #b2b2b2 0 42.85%, #949494 0 57.14%,
-    #767676 0 71.42%, #585858 0 85.71%, #3b3b3b 0 100%);
-}
-/* The wipe lives on the inner layer so the scroll observer can still see the bars */
-.js .bars.reveal::before {
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 1.3s var(--ease-out) 0.1s;
-}
-.js .bars.reveal.is-visible::before { clip-path: inset(0 0 0 0); }
-
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
   html:not(.js) { scroll-behavior: auto; }
@@ -1074,18 +1042,19 @@ body::after {
   .button { transition: none; }
   .js .reveal,
   .js .hero > *,
-  .js .hero h1 .line > span {
+  .js .name-character,
+  .typing-cursor,
+  .js .hero-name-cursor {
     opacity: 1;
+    visibility: visible;
     transform: none;
     transition: none;
     animation: none;
   }
   .js .video-frame { clip-path: none; transition: none; }
-  .js .section > h2::after { transform: none; transition: none; }
   .site-header nav a::after { transition: none; }
   .progress { display: none; }
   body::after { animation: none; }
-  .js .bars.reveal::before { clip-path: none; transition: none; }
   .resume-dialog[open] { animation: none; }
   .js .contact-form .field,
   .js .contact-form .form-actions { opacity: 1; transform: none; transition: none; }
