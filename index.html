@@ -17,7 +17,7 @@
   <a class="skip" href="#work">Skip to videos</a>
   <div class="progress" aria-hidden="true"></div>
   <div class="viewfinder" aria-hidden="true"></div>
-  <div class="home-bg" id="home-bg" aria-hidden="true"><div class="hb-beams"></div><div class="hb-frames"><i></i><i></i><i></i></div></div>
+  <div class="home-bg" id="home-bg" aria-hidden="true"><div class="hb-beams"></div><div class="hb-streaks"><i></i><i></i><i></i></div></div>
 
 
 
@@ -913,7 +913,7 @@
     var prog = document.querySelector('.progress'), pager = document.querySelectorAll('.pager button');
     var rail = document.querySelector('.timeline-progress'), tl = document.querySelector('.timeline');
     var steps = document.querySelectorAll('.timeline li');
-    var open = false, hideTimer, pauseTimer, lockUntil = 0, t0 = null;
+    var open = false, hideTimer, pauseTimer, settleTimer, lockUntil = 0, t0 = null;
     document.querySelectorAll('.year2').forEach(function (y) { y.textContent = new Date().getFullYear(); });
 
     function pause() {
@@ -928,8 +928,11 @@
         prog.style.transform = 'scaleX(' + (m > 0 ? scroller.scrollTop / m : 0) + ')';
       }
     }
+    function sbw() { if (!open) root.style.setProperty('--sbw', (innerWidth - root.clientWidth) + 'px'); }
     function apply(o) {
-      open = o; root.classList.toggle('exp-open', o);
+      sbw(); open = o;
+      clearTimeout(settleTimer); root.classList.remove('exp-settled');
+      if (o) settleTimer = setTimeout(function () { root.classList.add('exp-settled'); }, 700); root.classList.toggle('exp-open', o);
       [main, foot].forEach(function (el) { if (o) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
       if (o) { exp.removeAttribute('inert'); clearTimeout(pauseTimer); pauseTimer = setTimeout(pause, 850); } else {
         exp.setAttribute('inert', '');
@@ -948,7 +951,7 @@
       if (instant || warm) run();
       else { void main.offsetWidth; requestAnimationFrame(function () { setTimeout(run, 40); }); }
       if (instant) { void exp.offsetWidth; requestAnimationFrame(function () { root.classList.remove('no-anim'); }); }
-      if (!o) hideTimer = setTimeout(function () { if (!open) root.classList.remove('pane-live'); }, 800);
+      if (!o) hideTimer = setTimeout(function () { if (!open) root.classList.remove('pane-live'); }, 680);
     }
     function push(hash) { if (location.hash !== hash) history.pushState(null, '', hash); }
     function toggle(want) { if (want === open) return; go(want); push(want ? '#about' : '#top'); }
@@ -1033,6 +1036,7 @@
 
     scroller.addEventListener('scroll', tlUpdate, { passive: true });
     addEventListener('resize', tlUpdate);
+    addEventListener('resize', sbw);
     sync(true);
   })();
   </script>
