@@ -1074,3 +1074,117 @@ body::after {
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; }
 }
+
+
+/* ================= Two pages, one URL ================= */
+html { --p: 0; scrollbar-gutter: stable; background: var(--bg); overscroll-behavior-x: none; }
+.js body, .exp-scroll { touch-action: pan-y pinch-zoom; }
+html.exp-open { overflow: hidden; }
+
+/* The experience pane slides over the work page, which recedes a little */
+.exp-pane {
+  position: fixed; inset: 0; z-index: 5; background: var(--bg);
+  transform: translate3d(calc((1 - var(--p)) * 100%), 0, 0);
+  transition: transform 0.7s var(--ease-out);
+  box-shadow: -30px 0 60px rgba(0, 0, 0, 0.45);
+  will-change: transform;
+}
+html:not(.pane-live) .exp-pane { visibility: hidden; }
+html.pane-live main, html.pane-live body > .site-footer {
+  transform: translate3d(calc(var(--p) * -26%), 0, 0);
+  opacity: calc(1 - var(--p) * 0.55);
+  transition: transform 0.7s var(--ease-out), opacity 0.7s var(--ease-out);
+}
+html.dragging .exp-pane, html.dragging main, html.dragging body > .site-footer,
+html.no-anim .exp-pane, html.no-anim main, html.no-anim body > .site-footer { transition: none; }
+
+.exp-scroll {
+  position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain;
+  padding-top: var(--header-height, 4.1rem);
+  scroll-padding-top: calc(var(--header-height, 4.1rem) + 1rem);
+  scrollbar-width: thin; scrollbar-color: #3a4252 transparent;
+}
+
+/* New backdrop: teal and violet light, dots in the opposite corners, same drift and cursor parallax */
+.exp-bg {
+  position: absolute; inset: -3%; pointer-events: none;
+  transform: translate3d(calc(var(--mx, 0) * -16px), calc(var(--my, 0) * -10px), 0);
+  transition: transform 0.45s var(--ease-out);
+}
+.exp-bg::before {
+  content: ""; position: absolute; inset: -20%;
+  background:
+    radial-gradient(40% 40% at 78% 22%, rgba(61, 214, 200, 0.11), transparent 70%),
+    radial-gradient(45% 45% at 18% 78%, rgba(150, 110, 255, 0.13), transparent 70%);
+  animation: drift 30s ease-in-out infinite alternate-reverse;
+}
+.exp-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.24) 1.5px, transparent 2.2px) 0 0 / 22px 22px;
+  -webkit-mask: radial-gradient(circle at 0 0, #000, transparent 46%), radial-gradient(circle at 100% 100%, #000, transparent 46%);
+  mask: radial-gradient(circle at 0 0, #000, transparent 46%), radial-gradient(circle at 100% 100%, #000, transparent 46%);
+  animation: expdots 40s linear infinite;
+}
+@keyframes expdots { to { background-position: 22px 38px; } }
+
+/* Header: one nav group per page, and the switch button */
+html:not(.exp-open) .site-header ul[data-nav="exp"],
+html.exp-open .site-header ul[data-nav="work"] { display: none; }
+.site-header nav { margin-left: auto; }
+.pane-switch {
+  display: inline-flex; align-items: center; gap: 0.55rem; font: inherit; font-size: 0.95rem; font-weight: 700;
+  color: var(--text); background: rgba(244, 182, 63, 0.1); border: 1px solid rgba(244, 182, 63, 0.45);
+  border-radius: 999px; padding: 0.5rem 1rem; cursor: pointer; transition: background 0.3s, border-color 0.3s;
+}
+.pane-switch:hover { background: rgba(244, 182, 63, 0.2); border-color: var(--accent); }
+.pane-switch:focus-visible, .edge-tab:focus-visible, .pager button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ps-arrow { animation: nudge 2.4s var(--ease-out) infinite; }
+@keyframes nudge { 50% { transform: translateX(4px); } }
+.ps-to-work, html.exp-open .ps-to-exp { display: none; }
+html.exp-open .ps-to-work { display: inline; }
+html.exp-open .pane-switch { flex-direction: row-reverse; }
+html.exp-open .ps-arrow { transform: rotate(180deg); animation-name: nudge-back; }
+@keyframes nudge-back { 50% { transform: rotate(180deg) translateX(4px); } }
+.ps-short { display: none; }
+@media (max-width: 719px) {
+  .pane-switch { order: 2; padding: 0.4rem 0.85rem; }
+  .site-header nav { order: 3; flex-basis: 100%; margin-left: 0; }
+  .ps-long { display: none; }
+  .ps-short { display: inline; }
+}
+
+/* Edge tab: the "swipe this way" cue */
+.edge-tab {
+  position: fixed; top: 50%; right: 0; z-index: 12; --dir: -1;
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 0.9rem 0.4rem;
+  font: inherit; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+  background: rgba(23, 27, 36, 0.78); backdrop-filter: blur(6px);
+  border: 1px solid var(--line); border-right: 0; border-radius: 10px 0 0 10px; cursor: pointer;
+  transform: translateY(-50%); animation: peek 1.6s var(--ease-out) 2.2s 3; transition: color 0.3s, border-color 0.3s;
+}
+.edge-tab:hover { color: var(--text); border-color: var(--accent); }
+.edge-tab svg { width: 14px; height: 14px; }
+.edge-tab span { writing-mode: vertical-rl; }
+.et-work, html.exp-open .et-exp { display: none; }
+html.exp-open .et-work { display: inline; }
+html.exp-open .edge-tab { right: auto; left: 0; --dir: 1; border: 1px solid var(--line); border-left: 0; border-radius: 0 10px 10px 0; }
+html.exp-open .edge-tab svg { transform: rotate(180deg); }
+@keyframes peek { 50% { transform: translate(calc(var(--dir) * 7px), -50%); } }
+@media (max-width: 719px) { .edge-tab { width: 18px; padding: 0.9rem 0; } .edge-tab span { display: none; } }
+
+/* Pager dots */
+.pager {
+  position: fixed; left: 50%; bottom: 20px; z-index: 12; transform: translateX(-50%);
+  display: flex; gap: 8px; padding: 7px 10px; border-radius: 999px;
+  background: rgba(23, 27, 36, 0.7); backdrop-filter: blur(6px); border: 1px solid var(--line);
+}
+.pager button {
+  width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: #485165; cursor: pointer;
+  transition: width 0.5s var(--ease-out), background 0.3s;
+}
+.pager button[aria-current="true"] { width: 22px; background: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .exp-pane, html.pane-live main, html.pane-live body > .site-footer, .exp-bg { transition: none; }
+  .exp-bg::before, .exp-bg::after, .ps-arrow, .edge-tab { animation: none; }
+}
