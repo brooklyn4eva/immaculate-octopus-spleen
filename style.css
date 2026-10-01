@@ -886,6 +886,7 @@ body.modal-open { overflow: hidden; }
    so it frames the video like a viewfinder. Mouse devices only, so taps on phones never leave it stuck. */
 .parallax-el { position: relative; }
 .cam-ui { display: none; }
+#work > h2 { margin-bottom: 2.25rem; }
 @media (hover: hover) and (pointer: fine) {
   .cam-ui {
     display: block;
@@ -921,20 +922,6 @@ body.modal-open { overflow: hidden; }
     filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.6));
   }
   .video-card:hover .cam-ui::before { transform: scale(1); }
-
-  /* Autofocus box that locks on, then fades */
-  .cam-ui::after {
-    content: "";
-    position: absolute;
-    left: 50%; top: 50%;
-    width: 13%;
-    aspect-ratio: 1;
-    margin: -6.5% 0 0 -6.5%;
-    border: 2px solid var(--accent);
-    border-radius: 2px;
-    opacity: 0;
-  }
-  .video-card:hover .cam-ui::after { animation: cam-focus 1.2s ease-out both; }
 
   .cam-rec, .cam-meta {
     position: absolute;
@@ -978,16 +965,9 @@ body.modal-open { overflow: hidden; }
     background: #fff;
   }
 }
-@keyframes cam-focus {
-  0%   { opacity: 0; transform: scale(1.7); }
-  35%  { opacity: 1; transform: scale(1); }
-  75%  { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1); }
-}
 @keyframes cam-blink { 0% { opacity: 1; } 50% { opacity: 0.15; } }
 @media (prefers-reduced-motion: reduce) {
   .cam-ui, .cam-ui::before { transition: none; }
-  .video-card:hover .cam-ui::after { animation: none; }
   .video-card:hover .cam-rec i { animation: none; }
 }
 .article-card { transition: border-color 0.4s; }
