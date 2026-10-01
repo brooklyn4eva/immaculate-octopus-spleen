@@ -1084,8 +1084,8 @@ html.exp-open { overflow: hidden; }
   transform: translate3d(calc((1 - var(--p)) * 100%), 0, 0);
   transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s ease;
   box-shadow: -30px 0 60px rgba(0, 0, 0, calc(var(--p) * 0.45));
-  will-change: transform;
 }
+html.pane-live .exp-pane { will-change: transform; }
 html:not(.pane-live) .exp-pane { visibility: hidden; }
 html.pane-live main, html.pane-live body > .site-footer {
   will-change: transform, opacity;
@@ -1284,3 +1284,6 @@ html.exp-settled .hb-beams::before, html.exp-settled .hb-wire b { animation-play
 @media (hover: none) and (pointer: coarse) {
   .edge-tab, .pager { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(23, 27, 36, 0.92); }
 }
+
+/* Tilt: short linear easing, because the script already smooths the motion */
+html.tilt-on .hb-wire i, html.tilt-on .hb-beams { transition: transform 0.12s linear; }
