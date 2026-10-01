@@ -882,7 +882,114 @@ body.modal-open { overflow: hidden; }
 
 /* The card still reveals on entry. Keep iframe clipping and scale static so its
    pixels do not get repeatedly re-rasterized during floating motion. */
-.video-card:hover .video-frame { box-shadow: 0 0 0 1px rgba(255, 133, 20, 0.35); }
+/* CAMERA UI on video hover (replaces the old amber ring). Lives outside the clipped frame,
+   so it frames the video like a viewfinder. Mouse devices only, so taps on phones never leave it stuck. */
+.parallax-el { position: relative; }
+.cam-ui { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .cam-ui {
+    display: block;
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    font-family: var(--font);
+    color: #fff;
+  }
+  .video-card:hover .cam-ui { opacity: 1; }
+
+  /* Four corner brackets sitting just outside the video edge */
+  .cam-ui::before {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    background:
+      linear-gradient(#fff, #fff) left top / 1.3rem 2px no-repeat,
+      linear-gradient(#fff, #fff) left top / 2px 1.3rem no-repeat,
+      linear-gradient(#fff, #fff) right top / 1.3rem 2px no-repeat,
+      linear-gradient(#fff, #fff) right top / 2px 1.3rem no-repeat,
+      linear-gradient(#fff, #fff) left bottom / 1.3rem 2px no-repeat,
+      linear-gradient(#fff, #fff) left bottom / 2px 1.3rem no-repeat,
+      linear-gradient(#fff, #fff) right bottom / 1.3rem 2px no-repeat,
+      linear-gradient(#fff, #fff) right bottom / 2px 1.3rem no-repeat;
+    transform: scale(1.03);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.6));
+  }
+  .video-card:hover .cam-ui::before { transform: scale(1); }
+
+  /* Autofocus box that locks on, then fades */
+  .cam-ui::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 13%;
+    aspect-ratio: 1;
+    margin: -6.5% 0 0 -6.5%;
+    border: 2px solid var(--accent);
+    border-radius: 2px;
+    opacity: 0;
+  }
+  .video-card:hover .cam-ui::after { animation: cam-focus 1.2s ease-out both; }
+
+  .cam-rec, .cam-meta {
+    position: absolute;
+    top: -1.45rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.68rem;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+  .cam-rec { left: 0; gap: 0.4rem; }
+  .cam-rec i {
+    width: 0.5rem; height: 0.5rem;
+    border-radius: 50%;
+    background: var(--tally);
+  }
+  .video-card:hover .cam-rec i { animation: cam-blink 1.2s steps(1) infinite; }
+  .cam-meta { right: 0; gap: 0.6rem; }
+  .cam-batt {
+    position: relative;
+    width: 1.3rem; height: 0.6rem;
+    border: 1.5px solid #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+  }
+  .cam-batt::before {
+    content: "";
+    position: absolute;
+    inset: 1px 30% 1px 1px;
+    background: #fff;
+  }
+  .cam-batt::after {
+    content: "";
+    position: absolute;
+    right: -4px; top: 50%;
+    width: 2px; height: 4px;
+    margin-top: -2px;
+    background: #fff;
+  }
+}
+@keyframes cam-focus {
+  0%   { opacity: 0; transform: scale(1.7); }
+  35%  { opacity: 1; transform: scale(1); }
+  75%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+@keyframes cam-blink { 0% { opacity: 1; } 50% { opacity: 0.15; } }
+@media (prefers-reduced-motion: reduce) {
+  .cam-ui, .cam-ui::before { transition: none; }
+  .video-card:hover .cam-ui::after { animation: none; }
+  .video-card:hover .cam-rec i { animation: none; }
+}
 .article-card { transition: border-color 0.4s; }
 .article-card:hover { border-color: var(--accent); }
 
