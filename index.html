@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css?v=20260930-9">
+  <link rel="stylesheet" href="style.css?v=20260930-10">
 </head>
 <body>
 
@@ -858,7 +858,7 @@
       if (data.type === 'init') {
         var schedule = typeof requestAnimationFrame === 'function' ? requestAnimationFrame.bind(self) : function (fn) { return setTimeout(fn, 16.67); };
         var cancel = typeof cancelAnimationFrame === 'function' ? cancelAnimationFrame.bind(self) : clearTimeout;
-        receive = factory(data.canvas, schedule, cancel, 60, data.epoch);
+        receive = factory(data.canvas, schedule, cancel, data.fps || 60, data.epoch);
         receive(data.settings); self.postMessage({ type: 'ready' });
       } else if (receive) receive(data);
     };
@@ -892,7 +892,8 @@
     worker.onerror = function (event) { event.preventDefault(); fallback(); };
     var offscreen = canvas.transferControlToOffscreen();
     backend = function (data) { worker.postMessage(data); };
-    worker.postMessage({ type: 'init', canvas: offscreen, epoch: performance.timeOrigin, settings: settings() }, [offscreen]);
+    worker.postMessage({ type: 'init', canvas: offscreen, epoch: performance.timeOrigin, settings: settings(),
+      fps: matchMedia('(hover: none) and (pointer: coarse)').matches ? 30 : 60 }, [offscreen]);
     watchdog = setTimeout(fallback, 4000);
   } catch (error) { fallback(); }
   function configure() { lastX = lastY = null; backend(settings()); }
@@ -1056,10 +1057,67 @@
     var mouse = matchMedia('(hover: hover) and (pointer: fine)'), still = matchMedia('(prefers-reduced-motion: reduce)');
     addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse' || !mouse.matches || still.matches) return;
-      var el = open ? exp : document.getElementById('home-bg');
-      el.style.setProperty(open ? '--mx' : '--hx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
-      el.style.setProperty(open ? '--my' : '--hy', (e.clientY / innerHeight * 2 - 1).toFixed(3));
+      var nx = e.clientX / innerWidth * 2 - 1, ny = e.clientY / innerHeight * 2 - 1;
+      if (open) { expBg.style.setProperty('--mx', nx.toFixed(3)); expBg.style.setProperty('--my', ny.toFixed(3)); }
+      else homeShift(nx, ny);
     }, { passive: true });
+
+    /* Home backdrop parallax. Transforms are written directly to the three moving layers (not through
+       inherited CSS variables) so a mouse move or a tilt never restyles the hundreds of lines of text. */
+    var expBg = document.querySelector('.exp-bg');
+    var hbBeams = document.querySelector('.hb-beams'), hbCols = document.querySelectorAll('.hb-wire i');
+    function homeShift(hx, hy) {
+      hbBeams.style.transform = 'translate3d(' + (hx * 22).toFixed(2) + 'px,' + (hy * 12).toFixed(2) + 'px,0)';
+      hbCols[0].style.transform = 'translate3d(' + (hx * -26).toFixed(2) + 'px,' + (hy * 13).toFixed(2) + 'px,0)';
+      hbCols[1].style.transform = 'translate3d(' + (hx * -40).toFixed(2) + 'px,' + (hy * -20).toFixed(2) + 'px,0)';
+    }
+
+    /* Phone tilt drives the same parallax as the mouse. iOS asks permission once, on the first tap.
+       TILT_RANGE is the number of degrees of tilt that equals the full mouse swing; TILT_SIGN flips direction. */
+    (function () {
+      var TILT_RANGE = 14, TILT_SIGN = 1;
+      var T = { bx: null, by: null, a: null, tx: 0, ty: 0, x: 0, y: 0, raf: null, last: 0, lastEv: 0 };
+      var started = false, asked = false;
+      function angle() { var a = (screen.orientation && screen.orientation.angle) || window.orientation || 0; return ((a % 360) + 360) % 360; }
+      function onTilt(e) {
+        if (e.gamma == null || e.beta == null || open || document.hidden || still.matches) return;
+        var now = performance.now(), a = angle(), g = e.gamma, b = e.beta, x, y;
+        if (a === 90) { x = b; y = -g; } else if (a === 270) { x = -b; y = g; } else if (a === 180) { x = -g; y = -b; } else { x = g; y = b; }
+        if (T.bx === null || T.a !== a) { T.bx = x; T.by = y; T.a = a; }
+        /* The resting angle drifts toward wherever the phone is held, so only movement shifts the text */
+        var k = 1 - Math.exp(-Math.min(now - T.lastEv, 100) / 8000); T.lastEv = now;
+        T.bx += (x - T.bx) * k; T.by += (y - T.by) * k;
+        T.tx = Math.max(-1, Math.min(1, (x - T.bx) / TILT_RANGE)) * TILT_SIGN;
+        T.ty = Math.max(-1, Math.min(1, (y - T.by) / TILT_RANGE)) * TILT_SIGN;
+        if (T.raf === null) { T.last = now; T.raf = requestAnimationFrame(step); }
+      }
+      function step(now) {
+        var k = 1 - Math.pow(0.001, Math.min(now - T.last, 50) / 260); T.last = now;
+        T.x += (T.tx - T.x) * k; T.y += (T.ty - T.y) * k;
+        if (open) { T.raf = null; return; }
+        homeShift(T.x, T.y);
+        if (Math.abs(T.tx - T.x) + Math.abs(T.ty - T.y) < 0.004) { T.raf = null; return; }
+        T.raf = requestAnimationFrame(step);
+      }
+      function start() {
+        if (started) return; started = true;
+        root.classList.add('tilt-on');
+        addEventListener('deviceorientation', onTilt, { passive: true });
+      }
+      function ask() {
+        if (asked || !touch.matches || still.matches) return;
+        var D = window.DeviceOrientationEvent;
+        if (!D) return;
+        asked = true;
+        if (typeof D.requestPermission !== 'function') { start(); return; }
+        D.requestPermission().then(function (r) {
+          document.removeEventListener('click', ask, true);
+          if (r === 'granted') start();
+        }).catch(function () { asked = false; });
+      }
+      if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission !== 'function') ask();
+      else document.addEventListener('click', ask, true);
+    })();
 
     /* Smooth scrolling: eased glide for mouse wheels, in both the work page and the experience pane */
     (function () {
