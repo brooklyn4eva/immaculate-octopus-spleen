@@ -913,6 +913,7 @@ body::before {
   transform: scaleX(0);
   transform-origin: left;
   z-index: 30;
+  will-change: transform;
 }
 
 /* One orchestrated intro for the hero */
@@ -1031,11 +1032,7 @@ body::after {
     linear-gradient(var(--c), var(--c)) left top / var(--l) var(--t) no-repeat,
     linear-gradient(var(--c), var(--c)) left top / var(--t) var(--l) no-repeat,
     linear-gradient(var(--c), var(--c)) right top / var(--l) var(--t) no-repeat,
-    linear-gradient(var(--c), var(--c)) right top / var(--t) var(--l) no-repeat,
-    linear-gradient(var(--c), var(--c)) left bottom / var(--l) var(--t) no-repeat,
-    linear-gradient(var(--c), var(--c)) left bottom / var(--t) var(--l) no-repeat,
-    linear-gradient(var(--c), var(--c)) right bottom / var(--l) var(--t) no-repeat,
-    linear-gradient(var(--c), var(--c)) right bottom / var(--t) var(--l) no-repeat;
+    linear-gradient(var(--c), var(--c)) right top / var(--t) var(--l) no-repeat;
 }
 
 /* ---------- Motion preferences ---------- */
@@ -1244,7 +1241,16 @@ html.exp-open .site-header { padding-right: calc(var(--gutter) + var(--sbw, 0px)
 
 
 /* Corner brackets follow the visible area above Safari's toolbar so they never hide behind it */
-.viewfinder { inset: 8px 8px auto; height: calc(100vh - 16px); height: calc(100svh - 16px); }
+.viewfinder { inset: 8px 8px auto; height: var(--l); will-change: transform; }
+.viewfinder i {
+  position: absolute; left: 0; right: 0; top: 0; height: var(--l); will-change: transform;
+  transform: translate3d(0, calc(100vh - 16px - var(--l)), 0); transform: translate3d(0, calc(100svh - 16px - var(--l)), 0);
+  background:
+    linear-gradient(var(--c), var(--c)) left bottom / var(--l) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) left bottom / var(--t) var(--l) no-repeat,
+    linear-gradient(var(--c), var(--c)) right bottom / var(--l) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) right bottom / var(--t) var(--l) no-repeat;
+}
 
 /* Newsroom rundown (left) and wire datelines (right), rolling like a teleprompter at two depths */
 .hb-wire i {
@@ -1256,8 +1262,8 @@ html.exp-open .site-header { padding-right: calc(var(--gutter) + var(--sbw, 0px)
 }
 .hb-wire i:nth-child(1) { left: 3vw; --dx: -26; --dy: 26; }
 .hb-wire i:nth-child(2) { right: 3vw; --dx: -40; --dy: -40; text-align: right; }
-.hb-wire b { display: block; font-weight: 400; color: rgba(255, 255, 255, 0.11); animation: wire-roll 170s linear infinite; }
-.hb-wire i:nth-child(2) b { animation-direction: reverse; animation-duration: 210s; }
+.hb-wire b { display: block; font-weight: 400; color: rgba(255, 255, 255, 0.11); animation: wire-roll 1360s linear infinite; }
+.hb-wire i:nth-child(2) b { animation-direction: reverse; animation-duration: 1680s; }
 .hb-wire span { display: block; }
 .hb-wire .a { color: rgba(255, 133, 20, 0.24); }
 @keyframes wire-roll { to { transform: translate3d(0, -50%, 0); } }
@@ -1271,5 +1277,10 @@ html.exp-docked .exp-pane { position: relative; inset: auto; z-index: auto; tran
 html.exp-docked .exp-scroll { position: static; overflow: visible; padding: 0; }
 html.exp-docked .exp-bg { position: fixed; z-index: -1; background: var(--bg); }
 
-.viewfinder { transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
-@media (prefers-reduced-motion: reduce) { .viewfinder { transition: none; } }
+
+/* Responsiveness: skip work the user cannot see */
+html.exp-settled .home-bg { visibility: hidden; }
+html.exp-settled .hb-beams::before, html.exp-settled .hb-wire b { animation-play-state: paused; }
+@media (hover: none) and (pointer: coarse) {
+  .edge-tab, .pager { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(23, 27, 36, 0.92); }
+}
